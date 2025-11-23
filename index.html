@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>樂樂單字特訓 (V11 最終修復版)</title>
+    <title>樂樂單字特訓 (V11.1 修正版)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -163,8 +163,8 @@
         /* Tab Bar inside Accordion */
         .tab-bar {
             display: flex;
-            gap: 10px;
-            padding: 15px 20px 5px 20px;
+            gap: 8px;
+            padding: 15px 15px 5px 15px;
             overflow-x: auto;
             white-space: nowrap;
             -webkit-overflow-scrolling: touch;
@@ -212,34 +212,41 @@
             font-size: 0.75rem;
             padding: 1px 6px;
             border-radius: 10px;
-            background: rgba(0,0,0,0.1);
+            background: rgba(0,0,0,0.15);
             font-weight: 700;
+            color: inherit;
         }
 
         .stats-text {
-            font-size: 0.8rem;
-            color: #64748b;
-            margin-left: 10px;
-            font-weight: 500;
+            font-size: 0.85rem;
+            color: #475569;
+            margin-left: 8px;
+            font-weight: 600;
+            background: #e2e8f0;
+            padding: 4px 8px;
+            border-radius: 4px;
         }
 
         /* Grid System */
         .card-grid {
             display: grid;
-            padding: 20px;
-            gap: 16px;
-            min-height: 100px;
+            padding: 15px;
+            gap: 12px;
+            min-height: 100px; /* Avoid collapse when empty */
+            /* Desktop Default: 4 Columns */
+            grid-template-columns: repeat(4, 1fr);
         }
 
-        /* Mobile: 2 Columns */
+        /* Mobile: 1 Column (Fixed) */
         @media (max-width: 767px) {
-            .card-grid { grid-template-columns: 1fr 1fr; }
-            .tab-bar { padding-bottom: 10px; } 
+            .card-grid { 
+                grid-template-columns: 1fr; 
+                gap: 10px;
+                padding: 10px;
+            }
+            .tab-bar { padding-bottom: 10px; }
         }
-        /* Desktop: 4 Columns */
-        @media (min-width: 1024px) {
-            .card-grid { grid-template-columns: repeat(4, 1fr); }
-        }
+        
         /* Tablet: 3 Columns */
         @media (min-width: 768px) and (max-width: 1023px) {
             .card-grid { grid-template-columns: repeat(3, 1fr); }
@@ -248,7 +255,7 @@
         /* Card Component */
         .card-wrapper {
             position: relative; 
-            height: 300px;
+            height: 280px; /* Fixed height */
         }
 
         .card-container {
@@ -285,13 +292,14 @@
             align-items: center;
             padding: 16px;
             border: 2px solid transparent;
-            padding-bottom: 60px; /* Space for buttons */
+            /* Leave space at bottom for buttons */
+            padding-bottom: 50px; 
         }
 
         .card-front { z-index: 2; transform: rotateY(0deg); }
         .card-back { transform: rotateY(180deg); justify-content: flex-start; }
 
-        /* Grading Buttons */
+        /* Grading Buttons (Floating on Card) */
         .grade-controls {
             position: absolute;
             bottom: 12px;
@@ -300,8 +308,8 @@
             display: flex;
             justify-content: center;
             gap: 20px;
-            z-index: 20;
-            pointer-events: none;
+            z-index: 20; 
+            pointer-events: none; 
         }
 
         .grade-btn {
@@ -318,11 +326,13 @@
             box-shadow: 0 4px 6px rgba(0,0,0,0.15);
             transition: transform 0.1s, background 0.2s;
             background: white;
+            font-weight: bold;
         }
 
         .grade-btn:active { transform: scale(0.9); }
         .btn-correct { color: var(--color-correct); border: 2px solid var(--color-correct); }
         .btn-incorrect { color: var(--color-incorrect); border: 2px solid var(--color-incorrect); }
+        
         .btn-correct:hover { background: #ecfdf5; }
         .btn-incorrect:hover { background: #fef2f2; }
 
@@ -332,7 +342,7 @@
         
         .top-section { width: 100%; margin-bottom: 10px; }
         .pos-tag { font-size: 0.8rem; padding: 3px 10px; border-radius: 12px; font-weight: 500; margin-bottom: 6px; display: inline-block; }
-        .word-back-cn { font-size: 1.5rem; font-weight: 700; color: #334155; margin-bottom: 4px; }
+        .word-back-cn { font-size: 1.5rem; font-weight: 700; color: #334155; margin-bottom: 4px; line-height: 1.3; }
         
         .sentence-box { 
             background: #f8fafc; 
@@ -368,23 +378,27 @@
         .legend-adv { background: var(--color-adv-bg); color: var(--color-adv); border-color: var(--color-adv); }
         .legend-other { background: var(--color-other-bg); color: var(--color-other); border-color: var(--color-other); }
 
-        /* Scroll Nav (Restored) */
+        /* Helper */
+        .locked { pointer-events: none; }
+        .empty-msg { grid-column: 1 / -1; text-align: center; color: #94a3b8; padding: 30px; font-size: 1rem; }
+
+        /* Scroll Navigation */
         .scroll-nav {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            bottom: 25px;
+            right: 25px;
             display: flex;
             flex-direction: column;
             gap: 12px;
             z-index: 1000;
         }
         .nav-btn {
-            width: 44px;
-            height: 44px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.9);
             border: 1px solid #cbd5e1;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             color: #475569;
             display: flex;
             align-items: center;
@@ -394,11 +408,8 @@
             backdrop-filter: blur(4px);
         }
         .nav-btn:active { transform: scale(0.92); background: #f1f5f9; }
-        .nav-btn.micro { width: 38px; height: 38px; font-size: 0.9rem; }
+        .nav-btn.micro { width: 40px; height: 40px; }
         .nav-icon { width: 24px; height: 24px; stroke: currentColor; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
-
-        .locked { pointer-events: none; }
-        .empty-msg { grid-column: 1 / -1; text-align: center; color: #94a3b8; padding: 30px; font-size: 1rem; }
 
     </style>
 </head>
@@ -448,6 +459,7 @@
         const MAX_SPEED = 2.00;
         const SPEED_STEP = 0.05;
 
+        // State management for each group
         let groupStates = [];
 
         // --- 2. Audio ---
@@ -489,15 +501,38 @@
 
         async function playFullSequence(word, sentence, btn) {
             if(btn) btn.classList.add('playing');
-            await speak(word); 
+            await speak(word); // Word
             const spellingRate = Math.max(0.3, currentSpeed - 0.15); 
             const spellingText = word.split('').join(' ');
-            await speak(spellingText, spellingRate);
-            await speak(sentence);
+            await speak(spellingText, spellingRate); // Spelling
+            await speak(sentence); // Sentence
             if(btn) btn.classList.remove('playing');
         }
 
-        // --- 3. Data ---
+        // --- 3. Helper: Shuffle & POS ---
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function getPosType(pos) {
+            if (!pos) return "other";
+            const p = pos.toLowerCase();
+            if (p.includes('n.')) return 'noun';
+            if (p.includes('v.')) return 'verb';
+            if (p.includes('adj')) return 'adj';
+            if (p.includes('adv')) return 'adv';
+            return 'other';
+        }
+
+        function updateSpeedDisplay() {
+            document.getElementById('speed-display').textContent = currentSpeed.toFixed(2);
+        }
+
+        // --- 4. Data ---
         const vocabGroupsRaw = [
             {
                 title: "Dreaming Out Loud",
@@ -709,30 +744,6 @@
             }
         ];
 
-        // --- 4. Helper: POS Type ---
-        function getPosType(pos) {
-            if (!pos) return "other";
-            const p = pos.toLowerCase();
-            if (p.includes('n.')) return 'noun';
-            if (p.includes('v.')) return 'verb';
-            if (p.includes('adj')) return 'adj';
-            if (p.includes('adv')) return 'adv';
-            return 'other';
-        }
-
-        function updateSpeedDisplay() {
-            document.getElementById('speed-display').textContent = currentSpeed.toFixed(2);
-        }
-
-        // Shuffle (Fisher-Yates)
-        function shuffleArray(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
-            return array;
-        }
-
         // --- 5. State Logic ---
         // Initialize states for all groups
         vocabGroupsRaw.forEach((group, idx) => {
@@ -765,18 +776,11 @@
                 }
             });
 
-            // Scroll Controls (New Logic with Safety Checks)
-            const btnTop = document.getElementById('btn-top');
-            if (btnTop) btnTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-
-            const btnBottom = document.getElementById('btn-bottom');
-            if (btnBottom) btnBottom.onclick = () => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-
-            const btnUp = document.getElementById('btn-up');
-            if (btnUp) btnUp.onclick = () => window.scrollBy({ top: -280, behavior: 'smooth' });
-
-            const btnDown = document.getElementById('btn-down');
-            if (btnDown) btnDown.onclick = () => window.scrollBy({ top: 280, behavior: 'smooth' });
+            // Scroll Controls
+            document.getElementById('btn-top').onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+            document.getElementById('btn-bottom').onclick = () => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+            document.getElementById('btn-up').onclick = () => window.scrollBy({ top: -280, behavior: 'smooth' });
+            document.getElementById('btn-down').onclick = () => window.scrollBy({ top: 280, behavior: 'smooth' });
 
             renderAccordions();
         });
@@ -891,7 +895,7 @@
             const visibleItems = state.items.filter(item => item.status === state.filter);
 
             if (visibleItems.length === 0) {
-                gridElement.innerHTML = `<div style="grid-column:1/-1; text-align:center; color:#94a3b8; padding:40px;">沒有單字 (No cards)</div>`;
+                gridElement.innerHTML = `<div class="empty-msg">沒有單字 (No cards)</div>`;
                 gridElement.style.display = 'block'; // Ensure message is visible
             } else {
                 gridElement.style.display = 'grid';
@@ -903,8 +907,7 @@
                     if (state.filter !== 'unanswered') {
                         card.querySelector('.grade-controls').style.display = 'none';
                         // Also adjust padding since buttons are gone
-                        card.querySelector('.card-front').style.paddingBottom = '16px';
-                        card.querySelector('.card-back').style.paddingBottom = '16px';
+                        card.querySelector('.card-face').style.paddingBottom = '16px';
                     }
                     gridElement.appendChild(card);
                 });
