@@ -421,7 +421,7 @@
             <div class="speed-control">
                 <span class="speed-label">語速 (Speed):</span>
                 <button class="speed-btn" id="speed-down">－</button>
-                <span id="speed-display">0.70</span>
+                <span id="speed-display">0.5</span>
                 <button class="speed-btn" id="speed-up">＋</button>
             </div>
             <div class="legend">
@@ -533,216 +533,43 @@
         }
 
         // --- 4. Data ---
-        const vocabGroupsRaw = [
-            {
-                title: "Dreaming Out Loud",
-                words: [
-                    { word: "Arena", ipa: "[əˈriːnə]", pos: "n.", def: "體育館、競技場", sentence: "The concert was held in a large arena." },
-                    { word: "beat", ipa: "[biːt]", pos: "v.", def: "打破（紀錄）、打敗", sentence: "He beat the world record yesterday." },
-                    { word: "billion", ipa: "[ˈbɪljən]", pos: "n.", def: "十億", sentence: "The population reached one billion." },
-                    { word: "catchy", ipa: "[ˈkætʃi]", pos: "adj.", def: "朗朗上口的", sentence: "That song has a very catchy tune." },
-                    { word: "century", ipa: "[ˈsentʃəri]", pos: "n.", def: "世紀", sentence: "We are living in the 21st century." },
-                    { word: "chances", ipa: "[ˈtʃænsɪz]", pos: "n.", def: "機會、可能性", sentence: "Chances are it will rain today." },
-                    { word: "clearly", ipa: "[ˈklɪəli]", pos: "adv.", def: "清楚地、顯然", sentence: "He spoke clearly so everyone could hear." },
-                    { word: "Dreaming Out Loud", ipa: "", pos: "n.", def: "大聲做夢（專輯）", sentence: "Dreaming Out Loud is a famous album." },
-                    { word: "feature", ipa: "[ˈfiːtʃə]", pos: "n.", def: "特色、重點", sentence: "The main feature is its camera." },
-                    { word: "film", ipa: "[fɪlm]", pos: "n.", def: "電影", sentence: "We watched an interesting film." },
-                    { word: "household", ipa: "[ˈhaʊshəʊld]", pos: "adj.", def: "家庭的", sentence: "This brand is a household name." },
-                    { word: "huge", ipa: "[hjuːdʒ]", pos: "adj.", def: "巨大的", sentence: "The elephant is a huge animal." },
-                    { word: "immediate", ipa: "[ɪˈmiːdiət]", pos: "adj.", def: "立即的", sentence: "We need an immediate response." },
-                    { word: "island", ipa: "[ˈaɪlənd]", pos: "n.", def: "島嶼", sentence: "They live on a tropical island." },
-                    { word: "latest", ipa: "[ˈleɪtɪst]", pos: "adj.", def: "最新的", sentence: "Have you seen the latest news?" },
-                    { word: "least", ipa: "[liːst]", pos: "adj.", def: "最少", sentence: "That was the least interesting part." },
-                    { word: "million", ipa: "[ˈmɪljən]", pos: "n.", def: "百萬", sentence: "She won a million dollars." },
-                    { word: "monthly", ipa: "[ˈmʌnθli]", pos: "adv.", def: "每月的", sentence: "I pay my bills monthly." },
-                    { word: "mutual", ipa: "[ˈmjuːtʃuəl]", pos: "adj.", def: "相互的", sentence: "Respect is a mutual feeling." },
-                    { word: "perform", ipa: "[pəˈfɔːm]", pos: "v.", def: "表演", sentence: "The band will perform live tonight." },
-                    { word: "predicted", ipa: "[prɪˈdɪktɪd]", pos: "v.", def: "預測 (過去式)", sentence: "The weatherman predicted snow." },
-                    { word: "reason", ipa: "[ˈriːzn]", pos: "n.", def: "原因", sentence: "What is the reason for your visit?" },
-                    { word: "relate", ipa: "[rɪˈleɪt]", pos: "v.", def: "理解、共鳴", sentence: "I can relate to your problem." },
-                    { word: "resonate", ipa: "[ˈrezəneɪt]", pos: "v.", def: "引起共鳴", sentence: "His speech resonated with the crowd." },
-                    { word: "Since", ipa: "[sɪns]", pos: "conj.", def: "自從", sentence: "I haven't seen him since Monday." },
-                    { word: "Spotify", ipa: "[ˈspɒtɪfaɪ]", pos: "n.", def: "Spotify", sentence: "I listen to music on Spotify." },
-                    { word: "stolen", ipa: "[ˈstəʊlən]", pos: "v.", def: "偷走", sentence: "My wallet was stolen yesterday." },
-                    { word: "streams", ipa: "[striːmz]", pos: "n.", def: "串流次數", sentence: "The song has millions of streams." },
-                    { word: "studio", ipa: "[ˈstjuːdiəʊ]", pos: "n.", def: "錄音室", sentence: "They recorded in a studio." },
-                    { word: "talents", ipa: "[ˈtælənts]", pos: "n.", def: "天賦、才華", sentence: "She has many artistic talents." }
-                ]
-            },
-            {
-                title: "Super Dogs Find Water Leaks",
-                words: [
-                    { word: "as deep as", ipa: "[æz diːp æz]", pos: "phr.", def: "深達", sentence: "The water is as deep as the ocean." },
-                    { word: "break underground", ipa: "[breɪk ˌʌndəˈɡraʊnd]", pos: "phr.", def: "在地下破裂", sentence: "Pipes often break underground." },
-                    { word: "capable of", ipa: "[ˈkeɪpəbl ɒv]", pos: "phr.", def: "能夠", sentence: "He is capable of running fast." },
-                    { word: "chemical", ipa: "[ˈkemɪkl]", pos: "n.", def: "化學物質", sentence: "Be careful with that chemical." },
-                    { word: "chlorine", ipa: "[ˈklɔːriːn]", pos: "n.", def: "氯", sentence: "There is chlorine in the swimming pool." },
-                    { word: "clever", ipa: "[ˈklevə]", pos: "adj.", def: "聰明的", sentence: "The clever dog learned a new trick." },
-                    { word: "detect", ipa: "[dɪˈtekt]", pos: "v.", def: "偵測", sentence: "The machine can detect smoke." },
-                    { word: "dig up", ipa: "[dɪɡ ʌp]", pos: "phr.", def: "挖出", sentence: "The dog tried to dig up a bone." },
-                    { word: "exact", ipa: "[ɪɡˈzækt]", pos: "adj.", def: "確切的", sentence: "I need the exact measurements." },
-                    { word: "fix", ipa: "[fɪks]", pos: "v.", def: "修理", sentence: "Can you fix my bike?" },
-                    { word: "France", ipa: "[frɑːns]", pos: "n.", def: "法國", sentence: "Paris is in France." },
-                    { word: "however", ipa: "[haʊˈevə]", pos: "adv.", def: "然而", sentence: "It was cold; however, we went out." },
-                    { word: "important", ipa: "[ɪmˈpɔːtnt]", pos: "adj.", def: "重要的", sentence: "Water is important for life." },
-                    { word: "leak", ipa: "[liːk]", pos: "v.", def: "洩漏", sentence: "The roof started to leak." },
-                    { word: "locate", ipa: "[ləʊˈkeɪt]", pos: "v.", def: "找出位置", sentence: "Can you locate the store?" },
-                    { word: "mark", ipa: "[mɑːk]", pos: "v.", def: "標記", sentence: "Please mark the correct answer." },
-                    { word: "may", ipa: "[meɪ]", pos: "aux.", def: "可能", sentence: "It may rain later today." },
-                    { word: "moreover", ipa: "[mɔːrˈəʊvə]", pos: "adv.", def: "此外", sentence: "The car is fast; moreover, it is cheap." },
-                    { word: "once", ipa: "[wʌns]", pos: "adv.", def: "一旦", sentence: "Once you start, don't stop." },
-                    { word: "powerful", ipa: "[ˈpaʊəfl]", pos: "adj.", def: "強而有力的", sentence: "The engine is very powerful." },
-                    { word: "prevent", ipa: "[prɪˈvent]", pos: "v.", def: "預防", sentence: "Wash hands to prevent illness." },
-                    { word: "reach", ipa: "[riːtʃ]", pos: "v.", def: "到達", sentence: "We will reach the top soon." },
-                    { word: "shortage", ipa: "[ˈʃɔːtɪdʒ]", pos: "n.", def: "短缺", sentence: "There is a shortage of food." },
-                    { word: "sniff out", ipa: "[snɪf aʊt]", pos: "phr.", def: "嗅；聞", sentence: "Dogs can sniff out hidden items." },
-                    { word: "spot", ipa: "[spɒt]", pos: "n.", def: "地點", sentence: "This is a nice spot for a picnic." },
-                    { word: "sense of smell", ipa: "[sens ɒv smel]", pos: "phr.", def: "嗅覺", sentence: "Dogs have a good sense of smell." },
-                    { word: "tap water", ipa: "[tæp ˈwɔːtə]", pos: "n.", def: "自來水", sentence: "Is the tap water safe?" },
-                    { word: "traditional", ipa: "[trəˈdɪʃənl]", pos: "adj.", def: "傳統的", sentence: "They wore traditional clothes." },
-                    { word: "train", ipa: "[treɪn]", pos: "v.", def: "訓練", sentence: "Athletes train every day." },
-                    { word: "turns into", ipa: "[tɜːnz ˈɪntə]", pos: "phr.", def: "轉變為", sentence: "Water turns into ice." }
-                ]
-            },
-            {
-                title: "The Salty Story of the Dead Sea",
-                words: [
-                    { word: "Actually", ipa: "[ˈæktʃuəli]", pos: "adv.", def: "實際上", sentence: "Actually, I prefer tea." },
-                    { word: "as though", ipa: "[æz ðəʊ]", pos: "phr.", def: "彷彿", sentence: "He looked as though he was tired." },
-                    { word: "couch", ipa: "[kaʊtʃ]", pos: "n.", def: "沙發", sentence: "I sat on the couch." },
-                    { word: "deserts", ipa: "[ˈdezəts]", pos: "n.", def: "沙漠", sentence: "Camels live in deserts." },
-                    { word: "evaporates", ipa: "[ɪˈvæpəreɪts]", pos: "v.", def: "蒸發", sentence: "Water evaporates in the sun." },
-                    { word: "experience", ipa: "[ɪkˈspɪəriəns]", pos: "n.", def: "體驗", sentence: "It was a wonderful experience." },
-                    { word: "flowing into", ipa: "[ˈfləʊɪŋ ˈɪntə]", pos: "phr.", def: "流入", sentence: "The river is flowing into the sea." },
-                    { word: "landlocked", ipa: "[ˈlændlɒkt]", pos: "adj.", def: "被陸地包圍的", sentence: "Switzerland is landlocked." },
-                    { word: "lie", ipa: "[laɪ]", pos: "v.", def: "躺", sentence: "I like to lie on the grass." },
-                    { word: "ocean", ipa: "[ˈəʊʃn]", pos: "n.", def: "海洋", sentence: "The ocean is vast and blue." },
-                    { word: "rocks", ipa: "[rɒks]", pos: "n.", def: "岩石", sentence: "We climbed over the rocks." },
-                    { word: "salt", ipa: "[sɔːlt]", pos: "n.", def: "鹽", sentence: "Please pass the salt." },
-                    { word: "saltier", ipa: "[ˈsɔːltiə]", pos: "adj.", def: "更鹹的", sentence: "This soup tastes saltier." },
-                    { word: "Since", ipa: "[sɪns]", pos: "conj.", def: "因為", sentence: "Since it rained, we stayed in." },
-                    { word: "strange", ipa: "[streɪndʒ]", pos: "adj.", def: "奇怪的", sentence: "That is a strange sound." },
-                    { word: "Surprisingly", ipa: "[səˈpraɪzɪŋli]", pos: "adv.", def: "令人驚訝地", sentence: "Surprisingly, he won." },
-                    { word: "survive", ipa: "[səˈvaɪv]", pos: "v.", def: "生存", sentence: "Animals need water to survive." },
-                    { word: "themselves", ipa: "[ðəmˈselvz]", pos: "pron.", def: "他們自己", sentence: "They did it themselves." },
-                    { word: "Therefore", ipa: "[ˈðeəfɔː]", pos: "adv.", def: "因此", sentence: "I was sick; therefore, I stayed home." },
-                    { word: "truly", ipa: "[ˈtruːli]", pos: "adv.", def: "真正地", sentence: "I am truly sorry." },
-                    { word: "vapor", ipa: "[ˈveɪpə]", pos: "n.", def: "水氣", sentence: "Water vapor rises." },
-                    { word: "West Bank", ipa: "[west bæŋk]", pos: "n.", def: "西岸地區", sentence: "It is near the West Bank." },
-                    { word: "until", ipa: "[ənˈtɪl]", pos: "conj.", def: "直到", sentence: "Wait until I return." }
-                ]
-            },
-            {
-                title: "Smangus: Ancient Forest (Part 2)",
-                words: [
-                    { word: "Along", ipa: "[əˈlɒŋ]", pos: "prep.", def: "沿著", sentence: "We walked along the river." },
-                    { word: "Although", ipa: "[ɔːlˈðəʊ]", pos: "conj.", def: "雖然", sentence: "Although it rained, we played." },
-                    { word: "among", ipa: "[əˈmʌŋ]", pos: "prep.", def: "在...之中", sentence: "He sat among friends." },
-                    { word: "asleep", ipa: "[əˈsliːp]", pos: "adj.", def: "睡著的", sentence: "The baby is fast asleep." },
-                    { word: "Atayal", ipa: "[əˈtaɪəl]", pos: "n.", def: "泰雅族", sentence: "The Atayal people are indigenous." },
-                    { word: "bamboo", ipa: "[ˌbæmˈbuː]", pos: "n.", def: "竹子", sentence: "Pandas eat bamboo." },
-                    { word: "bird-watchers", ipa: "[bɜːd ˈwɒtʃəz]", pos: "n.", def: "賞鳥者", sentence: "Bird-watchers enjoy nature." },
-                    { word: "breeze", ipa: "[briːz]", pos: "n.", def: "微風", sentence: "A cool breeze blew." },
-                    { word: "decision", ipa: "[dɪˈsɪʒn]", pos: "n.", def: "決定", sentence: "He made a quick decision." },
-                    { word: "deep", ipa: "[diːp]", pos: "adj.", def: "深處的", sentence: "They went deep into the woods." },
-                    { word: "destination", ipa: "[ˌdestɪˈneɪʃn]", pos: "n.", def: "目的地", sentence: "We reached our destination." },
-                    { word: "Ecological", ipa: "[ˌiːkəˈlɒdʒɪkl]", pos: "adj.", def: "生態的", sentence: "Ecological protection is key." },
-                    { word: "environment", ipa: "[ɪnˈvaɪrənmənt]", pos: "n.", def: "環境", sentence: "Protect the environment." },
-                    { word: "especially", ipa: "[ɪˈspeʃəli]", pos: "adv.", def: "尤其", sentence: "I like fruit, especially apples." },
-                    { word: "exactly", ipa: "[ɪɡˈzæktli]", pos: "adv.", def: "正是", sentence: "That is exactly right." },
-                    { word: "farmland", ipa: "[ˈfɑːmlænd]", pos: "n.", def: "農田", sentence: "The farmland is green." },
-                    { word: "fertile", ipa: "[ˈfɜːtaɪl]", pos: "adj.", def: "肥沃的", sentence: "The soil is fertile." },
-                    { word: "finally", ipa: "[ˈfaɪnəli]", pos: "adv.", def: "終於", sentence: "Finally, we arrived." },
-                    { word: "forest", ipa: "[ˈfɒrɪst]", pos: "n.", def: "森林", sentence: "Bears live in the forest." },
-                    { word: "hesitation", ipa: "[ˌhezɪˈteɪʃn]", pos: "n.", def: "猶豫", sentence: "He answered without hesitation." },
-                    { word: "hike", ipa: "[haɪk]", pos: "v.", def: "健行", sentence: "We plan to hike." },
-                    { word: "Hsinchu", ipa: "[ˈʃɪnˈtʃuː]", pos: "n.", def: "新竹", sentence: "Hsinchu is windy." },
-                    { word: "Koraw", ipa: "", pos: "n.", def: "科拉（地名）", sentence: "Koraw is beautiful." },
-                    { word: "landscapes", ipa: "[ˈlændskeɪps]", pos: "n.", def: "風景", sentence: "The landscapes are nice." },
-                    { word: "last-minute", ipa: "[lɑːst ˈmɪnɪt]", pos: "adj.", def: "最後一刻", sentence: "A last-minute change." },
-                    { word: "leaves", ipa: "[liːvz]", pos: "n.", def: "葉子", sentence: "Leaves turn red in fall." },
-                    { word: "mountain", ipa: "[ˈmaʊntən]", pos: "n.", def: "山", sentence: "The mountain is high." },
-                    { word: "notice", ipa: "[ˈnəʊtɪs]", pos: "v.", def: "注意到", sentence: "Did you notice that?" },
-                    { word: "observe", ipa: "[əbˈzɜːv]", pos: "v.", def: "觀察", sentence: "Scientists observe stars." },
-                    { word: "offered", ipa: "[ˈɒfəd]", pos: "v.", def: "提供", sentence: "He offered to help." },
-                    { word: "originally", ipa: "[əˈrɪdʒɪnəli]", pos: "adv.", def: "起初", sentence: "It was originally blue." },
-                    { word: "outdoor", ipa: "[ˈaʊtdɔː]", pos: "adj.", def: "戶外的", sentence: "We like outdoor fun." },
-                    { word: "Park", ipa: "[pɑːk]", pos: "n.", def: "公園", sentence: "Let's go to the park." },
-                    { word: "peaceful", ipa: "[ˈpiːsfl]", pos: "adj.", def: "平靜的", sentence: "It is very peaceful." },
-                    { word: "pink", ipa: "[pɪŋk]", pos: "adj.", def: "粉紅色", sentence: "She wore pink." },
-                    { word: "quite", ipa: "[kwaɪt]", pos: "adv.", def: "相當", sentence: "It is quite cold." },
-                    { word: "refers", ipa: "[rɪˈfɜːz]", pos: "v.", def: "指的是", sentence: "This refers to a plant." },
-                    { word: "ride", ipa: "[raɪd]", pos: "n.", def: "旅程", sentence: "The ride was long." },
-                    { word: "rise", ipa: "[raɪz]", pos: "v.", def: "升起", sentence: "The sun will rise." },
-                    { word: "roads", ipa: "[rəʊdz]", pos: "n.", def: "道路", sentence: "The roads are wet." },
-                    { word: "roofs", ipa: "[ruːfs]", pos: "n.", def: "屋頂", sentence: "Red roofs." },
-                    { word: "rough", ipa: "[rʌf]", pos: "adj.", def: "崎嶇的", sentence: "The road was rough." },
-                    { word: "satisfied", ipa: "[ˈsætɪsfaɪd]", pos: "adj.", def: "滿意的", sentence: "I am satisfied." },
-                    { word: "selection", ipa: "[sɪˈlekʃn]", pos: "n.", def: "選擇", sentence: "Good selection of food." },
-                    { word: "shady", ipa: "[ˈʃeɪdi]", pos: "adj.", def: "蔭涼的", sentence: "A shady spot." },
-                    { word: "sharp", ipa: "[ʃɑːp]", pos: "adj.", def: "急劇的", sentence: "A sharp turn." },
-                    { word: "Smangus", ipa: "", pos: "n.", def: "司馬庫斯", sentence: "Smangus is a tribe." },
-                    { word: "spot", ipa: "[spɒt]", pos: "n.", def: "地點", sentence: "X marks the spot." },
-                    { word: "streams", ipa: "[striːmz]", pos: "n.", def: "溪流", sentence: "Streams flow to rivers." },
-                    { word: "toward", ipa: "[təˈwɔːd]", pos: "prep.", def: "朝向", sentence: "He walked toward me." },
-                    { word: "Trail", ipa: "[treɪl]", pos: "n.", def: "步道", sentence: "We hiked the trail." },
-                    { word: "until", ipa: "[ənˈtɪl]", pos: "conj.", def: "直到", sentence: "Wait until green." },
-                    { word: "village", ipa: "[ˈvɪlɪdʒ]", pos: "n.", def: "村落", sentence: "A small village." },
-                    { word: "wildlife", ipa: "[ˈwaɪldlaɪf]", pos: "n.", def: "野生生物", sentence: "Lots of wildlife." }
-                ]
-            },
-            {
-                title: "Hot Tech, Cool Ideas",
-                words: [
-                    { word: "achieve", ipa: "[əˈtʃiːv]", pos: "v.", def: "達成", sentence: "Work hard to achieve goals." },
-                    { word: "agriculture", ipa: "[ˈæɡrɪkʌltʃə]", pos: "n.", def: "農業", sentence: "Agriculture feeds us." },
-                    { word: "although", ipa: "[ɔːlˈðəʊ]", pos: "conj.", def: "雖然", sentence: "Although young, he is smart." },
-                    { word: "approach", ipa: "[əˈprəʊtʃ]", pos: "n.", def: "方法", sentence: "A new approach." },
-                    { word: "attractive", ipa: "[əˈtræktɪv]", pos: "adj.", def: "吸引人的", sentence: "An attractive offer." },
-                    { word: "conditions", ipa: "[kənˈdɪʃnz]", pos: "n.", def: "條件", sentence: "Good conditions." },
-                    { word: "cooling", ipa: "[ˈkuːlɪŋ]", pos: "n.", def: "冷卻", sentence: "The cooling system." },
-                    { word: "dealing", ipa: "[ˈdiːlɪŋ]", pos: "v.", def: "處理", sentence: "Dealing with problems." },
-                    { word: "decade", ipa: "[ˈdekeɪd]", pos: "n.", def: "十年", sentence: "A decade is ten years." },
-                    { word: "demonstrated", ipa: "[ˈdemənstreɪtɪd]", pos: "v.", def: "證明", sentence: "She demonstrated it." },
-                    { word: "denying", ipa: "[dɪˈnaɪɪŋ]", pos: "v.", def: "否認", sentence: "No denying it." },
-                    { word: "development", ipa: "[dɪˈveləpmənt]", pos: "n.", def: "發展", sentence: "Tech development." },
-                    { word: "directly", ipa: "[dɪˈrektli]", pos: "adv.", def: "直接", sentence: "Go directly home." },
-                    { word: "electricity", ipa: "[ɪˌlekˈtrɪsəti]", pos: "n.", def: "電力", sentence: "We need electricity." },
-                    { word: "Finland", ipa: "[ˈfɪnlənd]", pos: "n.", def: "芬蘭", sentence: "Finland is cold." },
-                    { word: "further", ipa: "[ˈfɜːðə]", pos: "adv.", def: "進一步", sentence: "For further information, call us." },
-                    { word: "harness", ipa: "[ˈhɑːnɪs]", pos: "v.", def: "利用", sentence: "Harness the wind." },
-                    { word: "imported", ipa: "[ɪmˈpɔːtɪd]", pos: "v.", def: "進口", sentence: "Imported goods." },
-                    { word: "inefficient", ipa: "[ˌɪnɪˈfɪʃnt]", pos: "adj.", def: "低效", sentence: "Inefficient engine." },
-                    { word: "instead", ipa: "[ɪnˈsted]", pos: "adv.", def: "代替", sentence: "Water instead of soda." },
-                    { word: "literally", ipa: "[ˈlɪtərəli]", pos: "adv.", def: "字面上", sentence: "He literally ran." },
-                    { word: "majority", ipa: "[məˈdʒɒrəti]", pos: "n.", def: "大多數", sentence: "The majority agree." },
-                    { word: "Mäntsälä", ipa: "", pos: "n.", def: "曼采萊", sentence: "A town in Finland." },
-                    { word: "nearby", ipa: "[ˌnɪəˈbaɪ]", pos: "adj.", def: "附近", sentence: "A store nearby." },
-                    { word: "obvious", ipa: "[ˈɒbviəs]", pos: "adj.", def: "明顯", sentence: "It is obvious." },
-                    { word: "pack", ipa: "[pæk]", pos: "v.", def: "擠滿", sentence: "Fans pack the stadium." },
-                    { word: "particularly", ipa: "[pəˈtɪkjələli]", pos: "adv.", def: "尤其", sentence: "Particularly cold." },
-                    { word: "Perhaps", ipa: "[pəˈhæps]", pos: "adv.", def: "也許", sentence: "Perhaps tomorrow." },
-                    { word: "possible", ipa: "[ˈpɒsəbl]", pos: "adj.", def: "可能", sentence: "It is possible." },
-                    { word: "proves", ipa: "[pruːvz]", pos: "v.", def: "證明", sentence: "It proves he is right." },
-                    { word: "race ahead", ipa: "[reɪs əˈhed]", pos: "phr.", def: "超前", sentence: "He raced ahead." },
-                    { word: "Recycling", ipa: "[ˌriːˈsaɪklɪŋ]", pos: "n.", def: "回收", sentence: "Recycling helps." },
-                    { word: "rid", ipa: "[rɪd]", pos: "v.", def: "擺脫", sentence: "Get rid of it." },
-                    { word: "scale", ipa: "[skeɪl]", pos: "n.", def: "規模", sentence: "Large scale." },
-                    { word: "soaring", ipa: "[ˈsɔːrɪŋ]", pos: "adj.", def: "飆升", sentence: "Prices are soaring." },
-                    { word: "Solve", ipa: "[sɒlv]", pos: "v.", def: "解決", sentence: "Solve the problem." },
-                    { word: "Sweden", ipa: "[ˈswiːdn]", pos: "n.", def: "瑞典", sentence: "Sweden is in Europe." },
-                    { word: "technology", ipa: "[tekˈnɒlədʒi]", pos: "n.", def: "科技", sentence: "Modern technology." },
-                    { word: "through", ipa: "[θruː]", pos: "prep.", def: "透過", sentence: "Through practice." },
-                    { word: "typically", ipa: "[ˈtɪpɪkli]", pos: "adv.", def: "通常", sentence: "Typically hot." },
-                    { word: "unclear", ipa: "[ˌʌnˈklɪə]", pos: "adj.", def: "不清楚", sentence: "It is unclear." },
-                    { word: "warm", ipa: "[wɔːm]", pos: "v.", def: "加熱", sentence: "Warm it up." },
-                    { word: "Waste-Heat", ipa: "[weɪst hiːt]", pos: "n.", def: "廢熱", sentence: "Reuse waste-heat." },
-                    { word: "wherever", ipa: "[weərˈevə]", pos: "adv.", def: "無論", sentence: "Go wherever." },
-                    { word: "Whether", ipa: "[ˈweðə]", pos: "conj.", def: "是否", sentence: "Whether to go." },
-                    { word: "While", ipa: "[waɪl]", pos: "conj.", def: "雖然", sentence: "While nice, it is pricey." }
-                ]
-            }
-        ];
+        // Load vocabulary data from JSON file
+        let vocabGroupsRaw = [];
+        
+        fetch('vocabGroupsRaw.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to load vocabulary data');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    vocabGroupsRaw = data;
+                    // Initialize states after data is loaded
+                    initializeGroupStates();
+                    // Render accordions after data is ready
+                    renderAccordions();
+                })
+                .catch(error => {
+                    console.error('Error loading vocabulary data:', error);
+                    document.getElementById('app-container').innerHTML =
+                        '<div class="empty-msg">無法載入單字資料 (Failed to load vocabulary data)</div>';
+                });
+
+        function initializeGroupStates() {
+            groupStates = [];
+            vocabGroupsRaw.forEach((group, idx) => {
+            const items = shuffleArray([...group.words]).map((w, i) => ({
+                ...w,
+                id: i,
+                status: 'unanswered'
+            }));
+            groupStates.push({
+                items: items,
+                filter: 'unanswered'
+            });
+            });
+        }
 
         // --- 5. State Logic ---
         // Initialize states for all groups
@@ -882,17 +709,18 @@
             resetBtn.className = 'tab-btn reset';
             resetBtn.innerHTML = '↺ 重來';
             resetBtn.onclick = () => {
-                if(confirm('確定要重置此群組的學習進度嗎？')) {
-                    state.items.forEach(i => i.status = 'unanswered');
-                    state.filter = 'unanswered'; // Force view back to continue
-                    updateGroupView(gIndex, gridElement, tabBarElement);
-                }
+                state.items.forEach(i => i.status = 'unanswered');
+                state.filter = 'unanswered'; // Force view back to continue
+                updateGroupView(gIndex, gridElement, tabBarElement);
             };
             tabBarElement.appendChild(resetBtn);
 
             // 2. Render Grid
             gridElement.innerHTML = '';
             const visibleItems = state.items.filter(item => item.status === state.filter);
+            
+            // Shuffle visible items before rendering
+            shuffleArray(visibleItems);
 
             if (visibleItems.length === 0) {
                 gridElement.innerHTML = `<div class="empty-msg">沒有單字 (No cards)</div>`;
