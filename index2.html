@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>樂樂單字特訓</title>
+    <title>Andy單字特訓</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -416,7 +416,7 @@
 <body>
 
     <header>
-        <h1>樂樂單字特訓</h1>
+        <h1>Andy單字特訓</h1>
         <div class="controls-area">
             <div class="speed-control">
                 <span class="speed-label">語速 (Speed):</span>
@@ -536,7 +536,7 @@
         // Load vocabulary data from JSON file
         let vocabGroupsRaw = [];
         
-        fetch('vocabGroupsRaw.json')
+        fetch('vocabGroupsRaw_andy.json')
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Failed to load vocabulary data');
@@ -762,32 +762,17 @@
             const cardInner = document.createElement('div');
             cardInner.className = 'card-inner';
 
-            // Front: English Word + IPA + Audio
+            // Front: Chinese Definition only
             const frontFace = document.createElement('div');
             frontFace.className = 'card-face card-front';
             
             const wordFront = document.createElement('div');
             wordFront.className = 'word-front';
-            wordFront.textContent = item.word;
+            wordFront.textContent = item.def;
 
-            const ipaText = document.createElement('div');
-            ipaText.className = 'word-ipa';
-            ipaText.textContent = item.ipa;
-
-            const frontAudioBtn = document.createElement('button');
-            frontAudioBtn.className = 'audio-btn';
-            frontAudioBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>`;
-            frontAudioBtn.onclick = (e) => {
-                e.stopPropagation();
-                frontAudioBtn.classList.add('playing');
-                speak(item.word).then(() => frontAudioBtn.classList.remove('playing'));
-            };
-            
             frontFace.appendChild(wordFront);
-            frontFace.appendChild(ipaText);
-            frontFace.appendChild(frontAudioBtn);
 
-            // Back: Chinese + Details + Full Audio
+            // Back: POS Tag + English Word + IPA + Sentence + Audio
             const backFace = document.createElement('div');
             backFace.className = 'card-face card-back';
 
@@ -798,12 +783,20 @@
             posTag.className = 'pos-tag';
             posTag.textContent = item.pos;
             
+            topSection.appendChild(posTag);
+            backFace.appendChild(topSection);
+
             const wordBack = document.createElement('div');
             wordBack.className = 'word-back-cn';
-            wordBack.textContent = item.def;
+            wordBack.style.fontSize = '1.8rem';
+            wordBack.style.fontWeight = '700';
+            wordBack.style.color = '#1e293b';
+            wordBack.style.marginBottom = '8px';
+            wordBack.textContent = item.word;
 
-            topSection.appendChild(posTag);
-            topSection.appendChild(wordBack);
+            const ipaText = document.createElement('div');
+            ipaText.className = 'word-ipa';
+            ipaText.textContent = item.ipa;
 
             const sentenceBox = document.createElement('div');
             sentenceBox.className = 'sentence-box';
@@ -817,7 +810,8 @@
                 playFullSequence(item.word, item.sentence, backAudioBtn);
             };
 
-            backFace.appendChild(topSection);
+            backFace.appendChild(wordBack);
+            backFace.appendChild(ipaText);
             backFace.appendChild(sentenceBox);
             backFace.appendChild(backAudioBtn);
 
@@ -831,7 +825,7 @@
             
             const btnIncorrect = document.createElement('button');
             btnIncorrect.className = 'grade-btn btn-incorrect';
-            btnIncorrect.innerHTML = '✕'; // X symbol
+            btnIncorrect.innerHTML = '✕';
             btnIncorrect.title = 'Mark as Incorrect';
             btnIncorrect.onclick = (e) => {
                 e.stopPropagation();
@@ -840,7 +834,7 @@
 
             const btnCorrect = document.createElement('button');
             btnCorrect.className = 'grade-btn btn-correct';
-            btnCorrect.innerHTML = '◯'; // O symbol
+            btnCorrect.innerHTML = '◯';
             btnCorrect.title = 'Mark as Correct';
             btnCorrect.onclick = (e) => {
                 e.stopPropagation();
