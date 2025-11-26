@@ -87,6 +87,8 @@ function loadVocabularyData(jsonFilePath, cardDisplayMode = 'english-first') {
             return response.json();
         })
         .then(data => {
+            // Store data globally so renderAccordions can access it
+            window.vocabGroupsRaw = data;
             initializeGroupStates(data);
             renderAccordions(cardDisplayMode);
         })
@@ -144,45 +146,49 @@ function renderAccordions(cardDisplayMode) {
     const container = document.getElementById('app-container');
     container.innerHTML = '';
 
-    groupStates.forEach((state, gIndex) => {
-        const accItem = document.createElement('div');
-        accItem.className = 'accordion-item';
+    if (!window.vocabGroupsRaw) {
+        console.error('Vocabulary data not loaded');
+        return;
+    }
 
-        const header = document.createElement('div');
-        header.className = 'accordion-header';
-        if (gIndex === 0) header.classList.add('active');
-        header.innerHTML = `
-            <span class="group-title">Group ${gIndex + 1}</span>
-            <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-        `;
+    const accordionTemplate = document.getElementById('accordion-template');
 
-        const content = document.createElement('div');
-        content.className = 'accordion-content';
-        if (gIndex === 0) content.style.maxHeight = "10000px";
+    window.vocabGroupsRaw.forEach((group, gIndex) => {
+        const accItem = accordionTemplate.content.cloneNode(true);
+        const accordionDiv = accItem.querySelector('.accordion-item');
+        const header = accItem.querySelector('.accordion-header');
+        const content = accItem.querySelector('.accordion-content');
+        const tabBar = accItem.querySelector('.tab-bar');
+        const grid = accItem.querySelector('.card-grid');
+        
+        // Set title
+        accItem.querySelector('.group-title').textContent = group.title;
+        
+        if (gIndex === 0) {
+            header.classList.add('active');
+            content.style.maxHeight = "10000px";
+        }
 
-        const tabBar = document.createElement('div');
-        tabBar.className = 'tab-bar';
-        content.appendChild(tabBar);
-
-        const grid = document.createElement('div');
-        grid.className = 'card-grid';
         grid.id = `grid-${gIndex}`;
-        content.appendChild(grid);
-
-        accItem.appendChild(header);
-        accItem.appendChild(content);
+        
         container.appendChild(accItem);
+        
+        // Get references after appending
+        const actualHeader = container.lastElementChild.querySelector('.accordion-header');
+        const actualContent = container.lastElementChild.querySelector('.accordion-content');
+        const actualGrid = container.lastElementChild.querySelector('.card-grid');
+        const actualTabBar = container.lastElementChild.querySelector('.tab-bar');
 
-        header.addEventListener('click', () => {
-            header.classList.toggle('active');
-            if (header.classList.contains('active')) {
-                content.style.maxHeight = content.scrollHeight + 500 + "px";
+        actualHeader.addEventListener('click', () => {
+            actualHeader.classList.toggle('active');
+            if (actualHeader.classList.contains('active')) {
+                actualContent.style.maxHeight = actualContent.scrollHeight + 500 + "px";
             } else {
-                content.style.maxHeight = null;
+                actualContent.style.maxHeight = null;
             }
         });
 
-        updateGroupView(gIndex, grid, tabBar, cardDisplayMode);
+        updateGroupView(gIndex, actualGrid, actualTabBar, cardDisplayMode);
     });
 }
 
@@ -200,39 +206,52 @@ function updateGroupView(gIndex, gridElement, tabBarElement, cardDisplayMode) {
     const accuracy = attempted > 0 ? Math.round((counts.correct / attempted) * 100) : 0;
 
     const tabs = [
-        { key: 'unanswered', label: '繼續', count: counts.unanswered, class: '' },
+        { key: 'unanswered', label: '繼續', count: counts.unanswered, class: 'unanswered' },
         { key: 'correct', label: '正確', count: counts.correct, class: 'correct' },
         { key: 'incorrect', label: '錯誤', count: counts.incorrect, class: 'incorrect' }
     ];
 
     tabBarElement.innerHTML = '';
+    const tabTemplate = document.getElementById('tab-button-template');
     
     tabs.forEach(t => {
-        const btn = document.createElement('button');
-        btn.className = `tab-btn ${t.class} ${state.filter === t.key ? 'active' : ''}`;
-        btn.innerHTML = `${t.label} <span class="badge">${t.count}</span>`;
-        btn.onclick = () => {
+        const tabClone = tabTemplate.content.cloneNode(true);
+        const btn = tabClone.querySelector('.tab-btn');
+        
+        // Only add class if it's not empty
+        if (t.class) {
+            btn.classList.add(t.class);
+        }
+        if (state.filter === t.key) {
+            btn.classList.add('active');
+        }
+        
+        tabClone.querySelector('.tab-label').textContent = t.label;
+        tabClone.querySelector('.badge').textContent = t.count;
+        
+        tabBarElement.appendChild(tabClone);
+        const actualBtn = tabBarElement.lastElementChild;
+        actualBtn.onclick = () => {
             state.filter = t.key;
             updateGroupView(gIndex, gridElement, tabBarElement, cardDisplayMode);
         };
-        tabBarElement.appendChild(btn);
     });
 
-    const statsSpan = document.createElement('span');
-    statsSpan.className = 'stats-text';
-    statsSpan.textContent = `正確率: ${accuracy}%`;
-    tabBarElement.appendChild(statsSpan);
+    const statsTemplate = document.getElementById('stats-template');
+    const statsClone = statsTemplate.content.cloneNode(true);
+    statsClone.querySelector('.stats-text').textContent = `正確率: ${accuracy}%`;
+    tabBarElement.appendChild(statsClone);
 
-    const resetBtn = document.createElement('button');
-    resetBtn.className = 'tab-btn reset';
-    resetBtn.innerHTML = '↺ 重來';
+    const resetTemplate = document.getElementById('reset-button-template');
+    const resetClone = resetTemplate.content.cloneNode(true);
+    tabBarElement.appendChild(resetClone);
+    const resetBtn = tabBarElement.lastElementChild;
     resetBtn.onclick = () => {
         state.items = shuffleArray(state.items);
         state.items.forEach(i => i.status = 'unanswered');
         state.filter = 'unanswered';
         updateGroupView(gIndex, gridElement, tabBarElement, cardDisplayMode);
     };
-    tabBarElement.appendChild(resetBtn);
 
     gridElement.innerHTML = '';
     const visibleItems = state.items.filter(item => item.status === state.filter);
@@ -242,11 +261,13 @@ function updateGroupView(gIndex, gridElement, tabBarElement, cardDisplayMode) {
         gridElement.style.display = 'block';
     } else {
         gridElement.style.display = 'grid';
-        visibleItems.forEach(item => {
+        visibleItems.forEach((item) => {
             const card = createCard(item, gIndex, () => updateGroupView(gIndex, gridElement, tabBarElement, cardDisplayMode), cardDisplayMode);
             if (state.filter !== 'unanswered') {
-                card.querySelector('.grade-controls').style.display = 'none';
-                card.querySelector('.card-face').style.paddingBottom = '16px';
+                const gradeControls = card.querySelector('.grade-controls');
+                const cardFaces = card.querySelectorAll('.card-face');
+                if (gradeControls) gradeControls.style.display = 'none';
+                cardFaces.forEach(face => face.style.paddingBottom = '16px');
             }
             gridElement.appendChild(card);
         });
@@ -262,158 +283,121 @@ function updateGroupView(gIndex, gridElement, tabBarElement, cardDisplayMode) {
 
 function createCard(item, groupIndex, refreshCallback, displayMode = 'english-first') {
     const theme = getPosType(item.pos);
-    const wrapper = document.createElement('div');
-    wrapper.className = 'card-wrapper';
-
-    const cardContainer = document.createElement('div');
-    cardContainer.className = `card-container theme-${theme}`;
-    const cardInner = document.createElement('div');
-    cardInner.className = 'card-inner';
-
-    const frontFace = document.createElement('div');
-    frontFace.className = 'card-face card-front';
+    const templateId = displayMode === 'chinese-first' ? 'card-template-chinese' : 'card-template-english';
+    const template = document.getElementById(templateId);
+    const cardClone = template.content.cloneNode(true);
     
-    const backFace = document.createElement('div');
-    backFace.className = 'card-face card-back';
-
+    const wrapper = cardClone.querySelector('.card-wrapper');
+    const cardContainer = cardClone.querySelector('.card-container');
+    cardContainer.classList.add(`theme-${theme}`);
+    
     if (displayMode === 'chinese-first') {
-        // Front: Chinese only
-        const wordFront = document.createElement('div');
-        wordFront.className = 'word-front';
-        wordFront.textContent = item.def;
-        frontFace.appendChild(wordFront);
-
-        // Back: POS + English + IPA + Sentence + Audio
-        const topSection = document.createElement('div');
-        topSection.className = 'top-section';
-        const posTag = document.createElement('span');
-        posTag.className = 'pos-tag';
-        posTag.textContent = item.pos;
-        topSection.appendChild(posTag);
-        backFace.appendChild(topSection);
-
-        const wordBack = document.createElement('div');
-        wordBack.className = 'word-back-cn';
+        // Front
+        cardClone.querySelector('.card-front .word-front').textContent = item.def;
+        
+        // Back
+        const topSection = cardClone.querySelector('.top-section');
+        topSection.style.display = 'flex';
+        topSection.style.alignItems = 'center';
+        topSection.style.justifyContent = 'center';
+        topSection.style.gap = '8px';
+        topSection.style.marginBottom = '12px';
+        
+        cardClone.querySelector('.pos-tag').textContent = item.pos;
+        
+        const backAudio = cardClone.querySelector('.card-back .audio-btn');
+        backAudio.style.marginTop = '0';
+        backAudio.style.width = '28px';
+        backAudio.style.height = '28px';
+        
+        const wordBack = cardClone.querySelector('.word-back-cn');
+        wordBack.textContent = item.word;
         wordBack.style.fontSize = '1.8rem';
         wordBack.style.fontWeight = '700';
         wordBack.style.color = '#1e293b';
         wordBack.style.marginBottom = '8px';
-        wordBack.textContent = item.word;
-
-        const ipaText = document.createElement('div');
-        ipaText.className = 'word-ipa';
-        ipaText.textContent = item.ipa;
-
-        const sentenceBox = document.createElement('div');
-        sentenceBox.className = 'sentence-box';
-        sentenceBox.textContent = item.sentence;
-
-        const backAudioBtn = document.createElement('button');
-        backAudioBtn.className = 'audio-btn';
-        backAudioBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>`;
-        backAudioBtn.onclick = (e) => {
+        wordBack.style.width = '100%';
+        wordBack.style.textAlign = 'center';
+        
+        cardClone.querySelector('.word-ipa').textContent = item.ipa;
+        cardClone.querySelector('.sentence-box').textContent = item.sentence;
+        
+        backAudio.onclick = (e) => {
             e.stopPropagation();
-            playFullSequence(item.word, item.sentence, backAudioBtn);
+            playFullSequence(item.word, item.sentence, backAudio);
         };
-
-        backFace.appendChild(wordBack);
-        backFace.appendChild(ipaText);
-        backFace.appendChild(sentenceBox);
-        backFace.appendChild(backAudioBtn);
     } else {
-        // Front: English + IPA + Audio (original mode)
-        const wordFront = document.createElement('div');
-        wordFront.className = 'word-front';
-        wordFront.textContent = item.word;
-
-        const ipaText = document.createElement('div');
-        ipaText.className = 'word-ipa';
-        ipaText.textContent = item.ipa;
-
-        const frontAudioBtn = document.createElement('button');
-        frontAudioBtn.className = 'audio-btn';
-        frontAudioBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>`;
-        frontAudioBtn.onclick = (e) => {
+        // Front
+        cardClone.querySelector('.card-front .word-front').textContent = item.word;
+        cardClone.querySelector('.card-front .word-ipa').textContent = item.ipa;
+        
+        const frontAudio = cardClone.querySelector('.card-front .audio-btn');
+        frontAudio.onclick = (e) => {
             e.stopPropagation();
-            frontAudioBtn.classList.add('playing');
-            speak(item.word).then(() => frontAudioBtn.classList.remove('playing'));
+            frontAudio.classList.add('playing');
+            speak(item.word).then(() => frontAudio.classList.remove('playing'));
         };
         
-        frontFace.appendChild(wordFront);
-        frontFace.appendChild(ipaText);
-        frontFace.appendChild(frontAudioBtn);
-
-        // Back: POS + Chinese + Sentence + Audio
-        const topSection = document.createElement('div');
-        topSection.className = 'top-section';
-        const posTag = document.createElement('span');
-        posTag.className = 'pos-tag';
-        posTag.textContent = item.pos;
-        const wordBack = document.createElement('div');
-        wordBack.className = 'word-back-cn';
-        wordBack.textContent = item.def;
-        topSection.appendChild(posTag);
-        topSection.appendChild(wordBack);
-
-        const sentenceBox = document.createElement('div');
-        sentenceBox.className = 'sentence-box';
-        sentenceBox.textContent = item.sentence;
-
-        const backAudioBtn = document.createElement('button');
-        backAudioBtn.className = 'audio-btn';
-        backAudioBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>`;
-        backAudioBtn.onclick = (e) => {
+        // Back
+        const topSection = cardClone.querySelector('.top-section');
+        topSection.style.display = 'flex';
+        topSection.style.alignItems = 'center';
+        topSection.style.justifyContent = 'center';
+        topSection.style.gap = '8px';
+        topSection.style.marginBottom = '12px';
+        
+        cardClone.querySelector('.pos-tag').textContent = item.pos;
+        
+        const backAudio = cardClone.querySelector('.card-back .audio-btn');
+        backAudio.style.marginTop = '0';
+        backAudio.style.width = '28px';
+        backAudio.style.height = '28px';
+        backAudio.onclick = (e) => {
             e.stopPropagation();
-            playFullSequence(item.word, item.sentence, backAudioBtn);
+            playFullSequence(item.word, item.sentence, backAudio);
         };
-
-        backFace.appendChild(topSection);
-        backFace.appendChild(sentenceBox);
-        backFace.appendChild(backAudioBtn);
+        
+        const wordBack = cardClone.querySelector('.word-back-cn');
+        wordBack.textContent = item.def;
+        wordBack.style.width = '100%';
+        wordBack.style.textAlign = 'center';
+        wordBack.style.marginBottom = '12px';
+        
+        cardClone.querySelector('.sentence-box').textContent = item.sentence;
     }
-
-    cardInner.appendChild(frontFace);
-    cardInner.appendChild(backFace);
-    cardContainer.appendChild(cardInner);
-
-    const controls = document.createElement('div');
-    controls.className = 'grade-controls';
     
-    const btnIncorrect = document.createElement('button');
-    btnIncorrect.className = 'grade-btn btn-incorrect';
-    btnIncorrect.innerHTML = '✕';
-    btnIncorrect.title = 'Mark as Incorrect';
-    btnIncorrect.onclick = (e) => {
+    // Create a container to return
+    const container = document.createElement('div');
+    container.appendChild(cardClone);
+    
+    // Now get actual DOM elements
+    const actualWrapper = container.querySelector('.card-wrapper');
+    const actualContainer = container.querySelector('.card-container');
+    const actualBtnIncorrect = container.querySelector('.btn-incorrect');
+    const actualBtnCorrect = container.querySelector('.btn-correct');
+    
+    actualBtnIncorrect.onclick = (e) => {
         e.stopPropagation();
-        markCard(item, 'incorrect', wrapper, refreshCallback);
+        markCard(item, 'incorrect', actualWrapper, refreshCallback);
     };
-
-    const btnCorrect = document.createElement('button');
-    btnCorrect.className = 'grade-btn btn-correct';
-    btnCorrect.innerHTML = '◯';
-    btnCorrect.title = 'Mark as Correct';
-    btnCorrect.onclick = (e) => {
+    
+    actualBtnCorrect.onclick = (e) => {
         e.stopPropagation();
-        markCard(item, 'correct', wrapper, refreshCallback);
+        markCard(item, 'correct', actualWrapper, refreshCallback);
     };
-
-    controls.appendChild(btnIncorrect);
-    controls.appendChild(btnCorrect);
-
-    cardContainer.addEventListener('click', () => {
-        if(cardContainer.classList.contains('locked')) return;
+    
+    actualContainer.addEventListener('click', () => {
+        if(actualContainer.classList.contains('locked')) return;
         playFlipSound();
         window.speechSynthesis.cancel();
-        if (cardContainer.classList.contains('flipped')) {
-            cardContainer.classList.remove('flipped');
+        if (actualContainer.classList.contains('flipped')) {
+            actualContainer.classList.remove('flipped');
         } else {
-            cardContainer.classList.add('flipped');
+            actualContainer.classList.add('flipped');
         }
     });
-
-    wrapper.appendChild(cardContainer);
-    wrapper.appendChild(controls);
-    return wrapper;
+    
+    return actualWrapper;
 }
 
 function markCard(item, status, domElement, refreshCallback) {
