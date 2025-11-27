@@ -240,6 +240,7 @@ function updateGroupView(gIndex, gridElement, tabBarElement, cardDisplayMode) {
     const statsTemplate = document.getElementById('stats-template');
     const statsClone = statsTemplate.content.cloneNode(true);
     statsClone.querySelector('.stats-text').textContent = `正確率: ${accuracy}%`;
+    
     tabBarElement.appendChild(statsClone);
 
     const resetTemplate = document.getElementById('reset-button-template');
