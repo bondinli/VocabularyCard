@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOY單字特訓</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script>window.CV = Date.now();</script>
+    <link rel="stylesheet" href="vocabulary-app.css">
+    <script>document.querySelector('link[href*="vocabulary-app.css"]').href += '?v=' + window.CV;</script>
+</head>
+<body>
+
+    <header>
+        <h1>JOY單字特訓</h1>
+        <div class="controls-area">
+            <div class="speed-control">
+                <span class="speed-label">語速 (Speed):</span>
+                <button class="speed-btn" id="speed-down">－</button>
+                <span id="speed-display">0.5</span>
+                <button class="speed-btn" id="speed-up">＋</button>
+            </div>
+            <div class="legend">
+                <span class="legend-item legend-noun">n. 名詞</span>
+                <span class="legend-item legend-verb">v. 動詞</span>
+                <span class="legend-item legend-adj">adj. 形容詞</span>
+                <span class="legend-item legend-adv">adv. 副詞</span>
+                <span class="legend-item legend-other">other 其他</span>
+                <a href="index2.html" class="legend-item legend-link" style="background: #dbeafe; color: #1e40af; border-color: #3b82f6; cursor: pointer; text-decoration: none;">
+                    ➜ Andy版
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="accordion-container" id="app-container"></div>
+
+    <div class="scroll-nav">
+        <button class="nav-btn" id="btn-top" title="回到頂部">
+            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+        </button>
+        <button class="nav-btn micro" id="btn-up" title="向上微調">
+            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg>
+        </button>
+        <button class="nav-btn micro" id="btn-down" title="向下微調">
+            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <button class="nav-btn" id="btn-bottom" title="到底部">
+            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+        </button>
+    </div>
+
+    <!-- Templates -->
+    <template id="accordion-template">
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <span class="group-title"></span>
+                <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 9l6 6 6-6"/>
+                </svg>
+            </div>
+            <div class="accordion-content">
+                <div class="tab-bar"></div>
+                <div class="card-grid"></div>
+            </div>
+        </div>
+    </template>
+
+    <template id="tab-button-template">
+        <button class="tab-btn">
+            <span class="tab-label"></span>
+            <span class="badge"></span>
+        </button>
+    </template>
+
+    <template id="stats-template">
+        <span class="stats-text"></span>
+    </template>
+
+    <template id="reset-button-template">
+        <button class="tab-btn reset">↺ 重來</button>
+    </template>
+
+    <template id="card-template-english">
+        <div class="card-wrapper">
+            <div class="card-container">
+                <div class="card-inner">
+                    <div class="card-face card-front">
+                        <div class="word-front"></div>
+                        <div class="word-ipa"></div>
+                        <button class="audio-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                                <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="card-face card-back">
+                        <div class="top-section">
+                            <span class="pos-tag"></span>
+                            <button class="audio-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                                    <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="word-back-cn"></div>
+                        <div class="sentence-box"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="grade-controls">
+                <button class="grade-btn btn-incorrect" title="Mark as Incorrect">✕</button>
+                <button class="grade-btn btn-correct" title="Mark as Correct">◯</button>
+            </div>
+        </div>
+    </template>
+
+    <template id="card-template-chinese">
+        <div class="card-wrapper">
+            <div class="card-container">
+                <div class="card-inner">
+                    <div class="card-face card-front">
+                        <div class="word-front"></div>
+                    </div>
+                    <div class="card-face card-back">
+                        <div class="top-section">
+                            <span class="pos-tag"></span>
+                            <button class="audio-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                                    <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="word-back-cn"></div>
+                        <div class="word-ipa"></div>
+                        <div class="sentence-box"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="grade-controls">
+                <button class="grade-btn btn-incorrect" title="Mark as Incorrect">✕</button>
+                <button class="grade-btn btn-correct" title="Mark as Correct">◯</button>
+            </div>
+        </div>
+    </template>
+
+    <script>document.write('<script src="vocabulary-app.js?v=' + window.CV + '"><\/script>');</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeApp('vocabGroupsRaw.json', 'english-first');
+        });
+    </script>
+</body>
+</html>
