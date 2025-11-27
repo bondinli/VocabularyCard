@@ -1,6 +1,6 @@
 [
   {
-    "title": "The Old Music Player",
+    "title": "week 48",
     "words": [
       {
         "word": "Germany",
@@ -64,6 +64,48 @@
         "pos": "prep.",
         "def": "到……之上；向……",
         "sentence": "You must put the plate onto the music player carefully."
+      },
+      {
+        "word": "besides",
+        "ipa": "[bɪˈsaɪdz]",
+        "pos": "adv., prep.",
+        "def": "此外；而且；除……之外",
+        "sentence": "Besides, it works well."
+      },
+      {
+        "word": "Saturday",
+        "ipa": "[ˈsætərdeɪ]",
+        "pos": "n.",
+        "def": "星期六",
+        "sentence": "We usually go to the park on Saturday."
+      },
+      {
+        "word": "danced",
+        "ipa": "[dænst]",
+        "pos": "v.",
+        "def": "跳舞 (過去式)",
+        "sentence": "She danced happily at the party last night."
+      },
+      {
+        "word": "loudly",
+        "ipa": "[ˈlaʊdli]",
+        "pos": "adv.",
+        "def": "大聲地",
+        "sentence": "The music played loudly in the room."
+      },
+      {
+        "word": "laughed",
+        "ipa": "[læft]",
+        "pos": "v.",
+        "def": "大笑 (過去式)",
+        "sentence": "They laughed at the funny joke."
+      },
+      {
+        "word": "rode",
+        "ipa": "[roʊd]",
+        "pos": "v.",
+        "def": "騎 (過去式)",
+        "sentence": "He rode his bike to school yesterday."
       }
     ]
   }
