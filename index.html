@@ -7,7 +7,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script>window.CV = Date.now();</script>
     <link rel="stylesheet" href="vocabulary-app.css">
+    <script>document.querySelector('link[href*="vocabulary-app.css"]').href += '?v=' + window.CV;</script>
 </head>
 <body>
 
@@ -147,7 +149,7 @@
         </div>
     </template>
 
-    <script src="vocabulary-app.js"></script>
+    <script>document.write('<script src="vocabulary-app.js?v=' + window.CV + '"><\/script>');</script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             initializeApp('vocabGroupsRaw.json', 'english-first');
