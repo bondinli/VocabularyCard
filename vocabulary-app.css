@@ -213,25 +213,46 @@ h1 {
 }
 
 .card-grid {
-    display: grid;
-    padding: 15px;
-    gap: 12px;
-    min-height: 100px;
-    grid-template-columns: repeat(4, 1fr);
+	/* 基本 grid 設定，mobile default 1 column */
+	display: grid;
+	padding: 15px;
+	gap: 12px;
+	min-height: 100px;
+	justify-items: stretch;
+	align-items: start;
+	grid-template-columns: repeat(4, 1fr); /* 預設桌面顯示 4 欄 */
 }
 
+/* 手機版：1 欄 */
 @media (max-width: 767px) {
-    .card-grid { 
-        grid-template-columns: 1fr; 
-        gap: 10px;
-        padding: 10px;
-    }
-    .tab-bar { padding-bottom: 10px; }
+	.card-grid {
+		grid-template-columns: repeat(1, 1fr);
+		gap: 10px;
+		padding: 10px;
+	}
 }
 
+/* 平板版：3 欄 */
 @media (min-width: 768px) and (max-width: 1023px) {
-    .card-grid { grid-template-columns: repeat(3, 1fr); }
+	.card-grid {
+		grid-template-columns: repeat(3, 1fr);
+	}
 }
+
+/* 桌面版：4 欄 */
+@media (min-width: 1024px) {
+	.card-grid {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
+
+/* 確保卡片不會撐開欄位 */
+.card-wrapper, .card-container, .card-inner {
+	min-width: 0;
+}
+
+/* 如果仍被其他規則覆蓋，可用更高權重（必要時取消註解） */
+/* .card-grid { grid-template-columns: repeat(4, minmax(220px, 1fr)) !important; } */
 
 .card-wrapper {
     position: relative; 

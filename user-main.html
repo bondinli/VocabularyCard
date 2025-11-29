@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>單字特訓</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="vocabulary-app.css">
+    <style>
+        body {
+            padding: 0;
+            padding-bottom: 0;
+        }
+
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .top-tabs {
+            background: white;
+            border-bottom: 2px solid #e2e8f0;
+            display: flex;
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .tab-item {
+            flex: 1;
+            padding: 16px 12px;
+            text-align: center;
+            background: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #64748b;
+            transition: all 0.2s;
+            border-bottom: 3px solid transparent;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .tab-item:hover {
+            background: #f8fafc;
+            color: #334155;
+        }
+
+        .tab-item.active {
+            color: #2563eb;
+            border-bottom-color: #2563eb;
+            background: #eff6ff;
+        }
+
+        .tab-item svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        .content-area {
+            flex: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding: 20px 10px;
+            max-width: 100vw;
+            width: 100vw;
+        }
+
+        .iframe-container {
+            display: none;
+            width: 100%;
+            height: 100%;
+        }
+
+        .iframe-container.active {
+            display: block;
+        }
+
+        .iframe-container iframe {
+            width: 100%; /* 確保 iframe 寬度隨父容器調整 */
+            height: 100%;
+            border: none;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 640px) {
+            .tab-item {
+                padding: 12px 8px;
+                font-size: 0.85rem;
+            }
+
+            .tab-item svg {
+                width: 18px;
+                height: 18px;
+            }
+
+            .tab-text {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="top-tabs" id="tabs">
+            <button class="tab-item active" data-tab="flashcard">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19,3H14.82C14.4,1.84 13.3,1 12,1C10.7,1 9.6,1.84 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3M7,7H17V5H19V19H5V5H7V7M12,17L17,12L15.59,10.59L12,14.17L9.41,11.59L8,13L12,17Z"/>
+                </svg>
+                <span class="tab-text">單字卡</span>
+            </button>
+            <button class="tab-item" data-tab="en2zh">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12.87,15.07L10.33,12.56L10.36,12.53C12.1,10.59 13.34,8.36 14.07,6H17V4H10V2H8V4H1V6H12.17C11.5,7.92 10.44,9.75 9,11.35C8.07,10.32 7.3,9.19 6.69,8H4.69C5.42,9.63 6.42,11.17 7.67,12.56L2.58,17.58L4,19L9,14L12.11,17.11L12.87,15.07M18.5,10H16.5L12,22H14L15.12,19H19.87L21,22H23L18.5,10M15.88,17L17.5,12.67L19.12,17H15.88Z"/>
+                </svg>
+                <span class="tab-text">英翻中</span>
+            </button>
+            <button class="tab-item" data-tab="zh2en">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12.87,15.07L10.33,12.56L10.36,12.53C12.1,10.59 13.34,8.36 14.07,6H17V4H10V2H8V4H1V6H12.17C11.5,7.92 10.44,9.75 9,11.35C8.07,10.32 7.3,9.19 6.69,8H4.69C5.42,9.63 6.42,11.17 7.67,12.56L2.58,17.58L4,19L9,14L12.11,17.11L12.87,15.07M18.5,10H16.5L12,22H14L15.12,19H19.87L21,22H23L18.5,10M15.88,17L17.5,12.67L19.12,17H15.88Z"/>
+                </svg>
+                <span class="tab-text">中翻英</span>
+            </button>
+            <a href="index.html" class="tab-item">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z"/>
+                </svg>
+                <span class="tab-text">首頁</span>
+            </a>
+        </div>
+
+        <div class="content-area">
+            <div id="flashcard-content" class="iframe-container active">
+                <iframe id="flashcard-frame" src=""></iframe>
+            </div>
+            <div id="en2zh-content" class="iframe-container">
+                <iframe id="en2zh-frame" src=""></iframe>
+            </div>
+            <div id="zh2en-content" class="iframe-container">
+                <iframe id="zh2en-frame" src=""></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get user from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const user = urlParams.get('user') || 'joy';
+        
+        // Update document title
+        document.title = `${user.toUpperCase()} 單字特訓`;
+
+        // Map user to their data files and display mode
+        const userDataMap = {
+            'andy': { 
+                file: 'vocabGroupsRaw_andy.json', 
+                mode: 'chinese-first',
+                title: 'ANDY'
+            },
+            'papa': { 
+                file: 'vocabGroupsRaw_papa.json', 
+                mode: 'english-first',
+                title: 'PAPA'
+            },
+            'joy': { 
+                file: 'vocabGroupsRaw.json', 
+                mode: 'english-first',
+                title: 'JOY'
+            }
+        };
+
+        const userData = userDataMap[user.toLowerCase()] || userDataMap['joy'];
+
+        // Set iframe sources with correct parameters
+        document.getElementById('flashcard-frame').src = `flashcard.html?user=${user}&file=${userData.file}&mode=${userData.mode}`;
+        document.getElementById('en2zh-frame').src = `en2zh.html?user=${user}&file=${userData.file}`;
+        document.getElementById('zh2en-frame').src = `zh2en.html?user=${user}&file=${userData.file}`;
+
+        // Tab switching
+        const tabs = document.querySelectorAll('.tab-item[data-tab]');
+        const contents = document.querySelectorAll('.iframe-container');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const targetTab = tab.dataset.tab;
+                
+                // Remove active class from all tabs and contents
+                tabs.forEach(t => t.classList.remove('active'));
+                contents.forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab and corresponding content
+                tab.classList.add('active');
+                document.getElementById(`${targetTab}-content`).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

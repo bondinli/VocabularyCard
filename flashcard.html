@@ -3,23 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PAPA單字特訓</title>
+    <title>單字卡</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <script>window.CV = Date.now();</script>
     <link rel="stylesheet" href="vocabulary-app.css">
-    <script>document.querySelector('link[href*="vocabulary-app.css"]').href += '?v=' + window.CV;</script>
 </head>
 <body>
-
     <header>
-        <h1>PAPA單字特訓</h1>
+        <h1 id="user-title">單字卡</h1>
         <div class="controls-area">
             <div class="speed-control">
                 <span class="speed-label">語速 (Speed):</span>
                 <button class="speed-btn" id="speed-down">－</button>
-                <span id="speed-display">0.5</span>
+                <span id="speed-display">0.70</span>
                 <button class="speed-btn" id="speed-up">＋</button>
             </div>
             <div class="legend">
@@ -28,12 +25,6 @@
                 <span class="legend-item legend-adj">adj. 形容詞</span>
                 <span class="legend-item legend-adv">adv. 副詞</span>
                 <span class="legend-item legend-other">other 其他</span>
-                <a href="index.html" class="legend-item legend-link" style="background: #fef3c7; color: #92400e; border-color: #f59e0b; cursor: pointer; text-decoration: none;">
-                    ➜ JOY版
-                </a>
-                <a href="index2.html" class="legend-item legend-link" style="background: #dbeafe; color: #1e40af; border-color: #3b82f6; cursor: pointer; text-decoration: none;">
-                    ➜ Andy版
-                </a>
             </div>
         </div>
     </header>
@@ -56,6 +47,7 @@
     </div>
 
     <!-- Templates -->
+    <!-- ...existing templates from index.html... -->
     <template id="accordion-template">
         <div class="accordion-item">
             <div class="accordion-header">
@@ -152,10 +144,24 @@
         </div>
     </template>
 
-    <script>document.write('<script src="vocabulary-app.js?v=' + window.CV + '"><\/script>');</script>
+    <script src="vocabulary-app.js"></script>
     <script>
+        // Get parameters from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const user = urlParams.get('user') || 'joy';
+        const dataFile = urlParams.get('file') || 'vocabGroupsRaw.json';
+        const displayMode = urlParams.get('mode') || 'english-first';
+
+        // Update title
+        document.getElementById('user-title').textContent = `${user.toUpperCase()} 單字卡`;
+
+        // Initialize app and ensure speed display is synced
         document.addEventListener('DOMContentLoaded', () => {
-            initializeApp('vocabGroupsRaw_Papa.json', 'english-first');
+            initializeApp(dataFile, displayMode);
+            // 如果 updateSpeedDisplay 可用，立即更新顯示
+            if (typeof updateSpeedDisplay === 'function') {
+                updateSpeedDisplay();
+            }
         });
     </script>
 </body>

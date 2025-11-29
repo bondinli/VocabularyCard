@@ -1,0 +1,354 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', 'Noto Sans TC', sans-serif;
+    background-color: #f8fafc;
+    color: #334155;
+    min-height: 100vh;
+}
+
+.test-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.action-bar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.action-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.action-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+.submit-btn {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.refresh-btn {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: white;
+}
+
+.refresh-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+}
+
+.result-panel {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    animation: slideDown 0.3s ease-out;
+    border: 3px solid #e2e8f0;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.result-content {
+    text-align: center;
+}
+
+.result-icon {
+    font-size: 4rem;
+    margin-bottom: 15px;
+}
+
+.result-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.result-score {
+    font-size: 1.1rem;
+    color: #64748b;
+    line-height: 1.6;
+}
+
+/* Accordion for test pages */
+.test-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.test-accordion-item {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    border: 1px solid #f1f5f9;
+}
+
+.test-accordion-header {
+    padding: 18px 24px;
+    background: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid transparent;
+    transition: background 0.2s;
+    user-select: none;
+}
+
+.test-accordion-header:hover {
+    background: #f8fafc;
+}
+
+.test-accordion-header.active {
+    border-bottom: 1px solid #e2e8f0;
+    background: #f8fafc;
+}
+
+.test-group-title {
+    font-weight: 700;
+    color: #334155;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.test-group-count {
+    font-size: 0.85rem;
+    color: #64748b;
+    background: #e2e8f0;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-weight: 600;
+}
+
+.test-accordion-icon {
+    transition: transform 0.3s;
+    color: #94a3b8;
+    width: 24px;
+    height: 24px;
+}
+
+.test-accordion-header.active .test-accordion-icon {
+    transform: rotate(180deg);
+}
+
+.test-accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+    background: #f8fafc;
+}
+
+.test-accordion-content.active {
+    max-height: 10000px;
+}
+
+.cards-grid {
+    display: grid;
+    gap: 20px;
+    padding: 20px;
+    justify-items: stretch;
+    align-items: start;
+    grid-template-columns: repeat(4, 1fr); /* 預設桌面顯示 4 欄 */
+}
+
+/* 手機版：1 欄 */
+@media (max-width: 767px) {
+    .cards-grid {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 12px;
+        padding: 12px;
+    }
+}
+
+/* 平板版：3 欄 */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .cards-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* 桌面版：4 欄 */
+@media (min-width: 1024px) {
+    .cards-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* 確保卡片內容不會撐開欄位 */
+.test-card, .card-wrapper, .card-container, .card-inner {
+    min-width: 0;
+}
+
+.test-card {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: all 0.2s;
+}
+
+.test-card:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.word-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #94a3b8;
+    letter-spacing: 0.5px;
+}
+
+.word-pos {
+    font-size: 0.8rem;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-weight: 500;
+}
+
+.card-word {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 16px;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.answer-input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.2s;
+}
+
+.answer-input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.answer-input.correct {
+    border-color: #10b981;
+    background: #ecfdf5;
+}
+
+.answer-input.incorrect {
+    border-color: #ef4444;
+    background: #fef2f2;
+}
+
+.answer-input.unanswered {
+    border-color: #94a3b8;
+    background: #f1f5f9;
+    color: #64748b;
+}
+
+.feedback {
+    margin-top: 8px;
+    font-size: 0.9rem;
+    min-height: 24px;
+    line-height: 1.4;
+}
+
+/* 未輸入樣式的提示（小字） */
+.feedback:empty {
+    min-height: 18px;
+}
+
+.feedback.correct {
+    color: #10b981;
+    font-weight: 600;
+}
+
+.feedback.incorrect {
+    color: #ef4444;
+    font-weight: 600;
+}
+
+.correct-answer {
+    color: #10b981;
+    font-weight: 700;
+    display: block;
+    margin-top: 4px;
+    font-size: 0.95em;
+}
+
+@media (max-width: 768px) {
+    .cards-grid {
+        grid-template-columns: 1fr;
+        padding: 15px;
+    }
+    
+    .action-bar {
+        flex-direction: column;
+    }
+    
+    .action-btn {
+        width: 100%;
+    }
+    
+    .test-accordion-header {
+        padding: 15px 18px;
+    }
+    
+    .test-group-title {
+        font-size: 1rem;
+    }
+}
