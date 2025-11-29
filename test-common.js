@@ -58,7 +58,6 @@ function loadVocabularyData(jsonFilePath, callback) {
 // Generate accordion grouped by title (sorted)
 function generateCards(testType) {
     const container = document.getElementById('cards-grid');
-    if (!container) return;
     container.innerHTML = '';
 
     const accordion = document.createElement('div');
@@ -97,9 +96,15 @@ function generateCards(testType) {
         const template = document.getElementById(templateId);
         if (!template) return;
 
+        // Flatten pool for options only once per group to improve randomness
+        const pool = Object.values(groupedWords).flat();
+
         words.forEach((word, index) => {
             const clone = template.content.cloneNode(true);
             const card = clone.querySelector('.test-card');
+            // set group/title on card so checkAnswers can use it
+            if (card) card.dataset.groupTitle = title;
+
             const posTag = card.querySelector('.word-pos');
             const posColors = getPosColor(word.pos);
             if (posTag) {
@@ -109,23 +114,48 @@ function generateCards(testType) {
             }
 
             const cardWord = card.querySelector('.card-word');
-            const answerInput = card.querySelector('.answer-input');
+            const feedback = card.querySelector('.feedback');
 
             if (testType === 'en2zh') {
+                // question: English word
                 if (cardWord) cardWord.textContent = word.word || '';
-                if (answerInput) answerInput.dataset.correctAnswer = (word.def || '').toString().trim();
-            } else {
-                if (cardWord) cardWord.textContent = word.def || '';
-                const wordLower = (word.word || '').toString().toLowerCase();
-                if (answerInput) {
-                    answerInput.placeholder = wordLower ? `${wordLower[0]}...${wordLower[wordLower.length - 1]}` : '';
-                    answerInput.dataset.correctAnswer = wordLower;
-                }
-            }
 
-            if (answerInput) {
-                answerInput.dataset.groupTitle = title;
-                answerInput.dataset.index = `${groupIndex}-${index}`;
+                // Generate options: correct + 3 random different defs
+                const correctAnswer = word.def || '';
+                // choose 3 different incorrect defs
+                const otherOptions = pool
+                    .filter(w => w.def && w.def !== correctAnswer)
+                    .sort(() => Math.random() - 0.5)
+                    .slice(0, 3)
+                    .map(w => w.def);
+
+                const allOptions = [...otherOptions, correctAnswer].sort(() => Math.random() - 0.5);
+
+                const options = card.querySelectorAll('.option-btn');
+                options.forEach((btn, i) => {
+                    btn.textContent = allOptions[i] || '';
+                    btn.dataset.correct = (allOptions[i] === correctAnswer).toString();
+                    // store correct answer on card for feedback later
+                    card.dataset.correctAnswer = correctAnswer;
+                    // ensure button enables selection behavior (no immediate disabling here)
+                    btn.disabled = false;
+                    btn.classList.remove('selected');
+                });
+
+            } else {
+                // zh2en: question: Chinese (def), answer: English (word)
+                if (cardWord) cardWord.textContent = word.def || '';
+                const answerInput = card.querySelector('.answer-input');
+                const correctAnswer = (word.word || '').toString().toLowerCase().trim();
+                if (answerInput) {
+                    answerInput.value = ''; // clear
+                    answerInput.dataset.correctAnswer = correctAnswer;
+                    // placeholder hint first/last char
+                    const wl = correctAnswer;
+                    answerInput.placeholder = wl ? `${wl[0]}...${wl[wl.length - 1]}` : '';
+                }
+                // store correct answer on card as well
+                card.dataset.correctAnswer = correctAnswer;
             }
 
             grid.appendChild(clone);
@@ -140,7 +170,6 @@ function generateCards(testType) {
             const isActive = header.classList.toggle('active');
             if (isActive) {
                 content.classList.add('active');
-                // expand
                 content.style.maxHeight = content.scrollHeight + "px";
             } else {
                 content.classList.remove('active');
@@ -148,7 +177,6 @@ function generateCards(testType) {
             }
         });
 
-        // ensure first content expanded height set
         if (groupIndex === 0) {
             content.style.maxHeight = content.scrollHeight + "px";
         }
@@ -158,84 +186,55 @@ function generateCards(testType) {
     currentWords = allWords;
 }
 
-// Check answers, handle empty as unanswered, compute stats
+// Check answers, handle both en2zh (choice) and zh2en (input)
 function checkAnswers(testType) {
-    const inputs = document.querySelectorAll('.answer-input');
+    const cards = document.querySelectorAll('.test-card');
     let correct = 0;
-    let totalQuestions = inputs.length;
-    let attempted = 0; // will count all inputs (empty included as attempted)
-    let groupResults = {};
+    let totalQuestions = cards.length;
+    // Treat unanswered as incorrect -> attempted = totalQuestions
+    const attempted = totalQuestions;
+    const groupResults = {};
 
-    inputs.forEach(input => {
-        const raw = input.value || '';
-        const userAnswer = raw.trim();
-        const correctAnswer = (input.dataset.correctAnswer || '').toString();
-        const groupTitle = input.dataset.groupTitle || 'Unknown';
-        const feedback = input.parentElement.querySelector('.feedback');
-
+    cards.forEach((card) => {
+        const feedback = card.querySelector('.feedback');
+        const groupTitle = card.dataset.groupTitle || 'Unknown';
         if (!groupResults[groupTitle]) groupResults[groupTitle] = { correct: 0, total: 0, attempted: 0 };
-
         groupResults[groupTitle].total++;
-        // Treat every input as attempted (empty => incorrect)
-        attempted++;
-        groupResults[groupTitle].attempted++;
+        groupResults[groupTitle].attempted++; // count all as attempted
 
-        // reset classes
-        input.classList.remove('correct', 'incorrect', 'unanswered');
-
-        let isCorrect = false;
-
-        if (!userAnswer) {
-            // Empty -> count as incorrect
-            isCorrect = false;
-            input.classList.add('incorrect');
-            if (feedback) {
-                feedback.className = 'feedback incorrect';
-                feedback.innerHTML = `✗ 未輸入（視為錯誤）<br><span class="correct-answer">正確答案：${correctAnswer}</span>`;
-            }
-        } else {
-            // Non-empty -> normal validation
-            if (testType === 'zh2en') {
-                const normalize = txt => txt.toLowerCase().replace(/[^\w\s]/g, '').replace(/\s+/g, ' ').trim();
-                const nu = normalize(userAnswer);
-                const nc = normalize(correctAnswer);
-                if (nu === nc || nc.includes(nu) || nu.includes(nc)) isCorrect = true;
-            } else {
-                const normalizeZh = txt => txt.replace(/[，。！？；：、（）「」『』《》【】\s]/g, '').trim();
-                const nu = normalizeZh(userAnswer);
-                const nc = normalizeZh(correctAnswer);
-                if (nu === nc || nc.includes(nu) || nu.includes(nc)) isCorrect = true;
-                if (!isCorrect && nu.length > 0 && nc.length > 0) {
-                    let matchCount = 0;
-                    for (let ch of nu) if (nc.includes(ch)) matchCount++;
-                    const matchRate = matchCount / Math.max(1, nc.length);
-                    if (matchRate >= 0.7) isCorrect = true;
-                }
-            }
-
-            if (isCorrect) {
-                input.classList.add('correct');
-                if (feedback) {
-                    feedback.className = 'feedback correct';
-                    feedback.innerHTML = '✓ 正確！<span class="correct-answer" style="display:block;margin-top:4px;font-size:0.9em;color:#059669;">正確答案：' + correctAnswer + '</span>';
-                }
+        if (testType === 'en2zh') {
+            const selectedBtn = card.querySelector('.option-btn.selected');
+            const correctAnswer = card.dataset.correctAnswer || '';
+            if (selectedBtn && selectedBtn.dataset.correct === 'true') {
                 correct++;
                 groupResults[groupTitle].correct++;
+                if (feedback) { feedback.textContent = '✓ 正確！'; feedback.className = 'feedback correct'; }
             } else {
-                input.classList.add('incorrect');
-                if (feedback) {
-                    feedback.className = 'feedback incorrect';
-                    feedback.innerHTML = `✗ 錯誤<br><span class="correct-answer">正確答案：${correctAnswer}</span>`;
-                }
+                if (feedback) { feedback.textContent = `✗ 錯誤，正確答案：${correctAnswer}`; feedback.className = 'feedback incorrect'; }
+            }
+            // disable option buttons after check to prevent re-change
+            const opts = card.querySelectorAll('.option-btn');
+            opts.forEach(b => b.disabled = true);
+        } else {
+            // zh2en
+            const input = card.querySelector('.answer-input');
+            const correctAnswer = (input && input.dataset.correctAnswer) || (card.dataset.correctAnswer || '');
+            const user = (input && input.value || '').toString().toLowerCase().trim();
+            // normalize alphanumeric (remove punctuation/spaces)
+            const normalize = s => s.replace(/[^\w]/g, '').trim();
+            const nu = normalize(user);
+            const nc = normalize(correctAnswer.toLowerCase());
+            if (nu !== '' && (nu === nc || nc.includes(nu) || nu.includes(nc))) {
+                correct++;
+                groupResults[groupTitle].correct++;
+                if (feedback) { feedback.textContent = '✓ 正確！'; feedback.className = 'feedback correct'; }
+            } else {
+                if (feedback) { feedback.textContent = `✗ 錯誤，正確答案：${correctAnswer}`; feedback.className = 'feedback incorrect'; }
             }
         }
     });
 
     showResult({ correct, totalQuestions, attempted, groupResults });
-    setTimeout(() => {
-        const rp = document.getElementById('result-panel');
-        if (rp) rp.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 120);
 }
 
 // Show result summary and per-group breakdown
@@ -278,7 +277,7 @@ function showResult(stats) {
 
     let html = `
         <div style="font-size:1.1rem;font-weight:700;margin-bottom:8px;">
-            題目總數：${totalQuestions}，已作答（含空輸入視為錯誤）：${attempted}
+            題目總數：${totalQuestions}，已作答（含未作答視為錯誤）：${attempted}
         </div>
         <div style="font-size:1.3rem;font-weight:700;margin-bottom:8px;">
             答對 <span style="color:#10b981;">${correct}</span> / ${attempted} 題
@@ -290,7 +289,7 @@ function showResult(stats) {
 
     if (Object.keys(groupResults).length) {
         html += '<div style="margin-top:16px;padding-top:12px;border-top:1px solid #e6eef8;">';
-        html += '<div style="font-size:1rem;color:#64748b;margin-bottom:8px;">各組成績（空輸入視為錯誤）：</div>';
+        html += '<div style="font-size:1rem;color:#64748b;margin-bottom:8px;">各組成績：</div>';
         for (let g in groupResults) {
             const gd = groupResults[g];
             const gAttempted = gd.attempted || 0;

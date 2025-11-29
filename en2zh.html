@@ -31,21 +31,24 @@
         </div>
 
         <div id="cards-grid">
-            <!-- Accordion will be generated here -->
+            <!-- Cards will be generated here -->
         </div>
     </div>
 
     <template id="en2zh-card-template">
-        <div class="test-card">
+        <div class="test-card" data-correct-answer="">
             <div class="card-header">
                 <span class="word-label">ENGLISH</span>
                 <span class="word-pos"></span>
             </div>
             <div class="card-word"></div>
-            <div class="input-wrapper">
-                <input type="text" class="answer-input" placeholder="請輸入中文翻譯">
-                <div class="feedback"></div>
+            <div class="options-wrapper">
+                <button class="option-btn" data-option="1"></button>
+                <button class="option-btn" data-option="2"></button>
+                <button class="option-btn" data-option="3"></button>
+                <button class="option-btn" data-option="4"></button>
             </div>
+            <div class="feedback"></div>
         </div>
     </template>
 
@@ -53,8 +56,17 @@
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const dataFile = urlParams.get('file') || 'vocabGroupsRaw.json';
-        
+
         initTestPage(dataFile, 'en2zh');
+
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('option-btn')) {
+                const card = e.target.closest('.test-card');
+                const options = card.querySelectorAll('.option-btn');
+                options.forEach((btn) => btn.classList.remove('selected'));
+                e.target.classList.add('selected');
+            }
+        });
     </script>
 </body>
 </html>
