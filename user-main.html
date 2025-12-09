@@ -119,6 +119,13 @@
             }
         }
     </style>
+    <script>
+        window.APP_CACHE_VERSION = Date.now();
+        const styleLink = document.createElement('link');
+        styleLink.rel = 'stylesheet';
+        styleLink.href = `vocabulary-app.css?v=${window.APP_CACHE_VERSION}`;
+        document.head.appendChild(styleLink);
+    </script>
 </head>
 <body>
     <div class="main-container">
@@ -155,6 +162,7 @@
     </div>
 
     <script>
+        const cacheVersion = window.APP_CACHE_VERSION || Date.now();
         // Get user from URL
         const urlParams = new URLSearchParams(window.location.search);
         const user = urlParams.get('user') || 'joy';
@@ -184,9 +192,9 @@
         const userData = userDataMap[user.toLowerCase()] || userDataMap['joy'];
 
         // Set iframe sources with correct parameters
-        document.getElementById('flashcard-frame').src = `flashcard.html?user=${user}&file=${userData.file}&mode=${userData.mode}`;
-        document.getElementById('en2zh-frame').src = `en2zh.html?user=${user}&file=${userData.file}`;
-        document.getElementById('zh2en-frame').src = `zh2en.html?user=${user}&file=${userData.file}`;
+        document.getElementById('flashcard-frame').src = `flashcard.html?user=${user}&file=${userData.file}&mode=${userData.mode}&v=${cacheVersion}`;
+        document.getElementById('en2zh-frame').src = `en2zh.html?user=${user}&file=${userData.file}&v=${cacheVersion}`;
+        document.getElementById('zh2en-frame').src = `zh2en.html?user=${user}&file=${userData.file}&v=${cacheVersion}`;
 
         // Tab switching
         const tabs = document.querySelectorAll('.tab-item[data-tab]');

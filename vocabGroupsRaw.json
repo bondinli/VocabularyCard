@@ -1,210 +1,675 @@
 [
   {
-    "title": "Dreaming Out Loud",
+    "title": "第七課文基本單字",
     "words": [
-      { "word": "Arena", "ipa": "[əˈrinə]", "pos": "n.", "def": "體育館、競技場", "sentence": "The concert was held in a large arena." },
-      { "word": "beat", "ipa": "[bit]", "pos": "v.", "def": "打破（紀錄）、打敗", "sentence": "He beat the world record yesterday." },
-      { "word": "billion", "ipa": "[ˈbɪljən]", "pos": "n.", "def": "十億", "sentence": "The population reached one billion." },
-      { "word": "catchy", "ipa": "[ˈkætʃi]", "pos": "adj.", "def": "朗朗上口的", "sentence": "That song has a very catchy tune." },
-      { "word": "century", "ipa": "[ˈsentʃəri]", "pos": "n.", "def": "世紀", "sentence": "We are living in the 21st century." },
-      { "word": "chances", "ipa": "[ˈtʃænsəz]", "pos": "n.", "def": "機會、可能性", "sentence": "Chances are it will rain today." },
-      { "word": "clearly", "ipa": "[ˈklɪrli]", "pos": "adv.", "def": "清楚地、顯然", "sentence": "He spoke clearly so everyone could hear." },
-      { "word": "Dreaming Out Loud", "ipa": "[ˈdrimɪŋ aʊt laʊd]", "pos": "n.", "def": "大聲做夢（專輯）", "sentence": "Dreaming Out Loud is a famous album." },
-      { "word": "feature", "ipa": "[ˈfitʃər]", "pos": "n.", "def": "特色、重點", "sentence": "The main feature is its camera." },
-      { "word": "film", "ipa": "[fɪlm]", "pos": "n.", "def": "電影", "sentence": "We watched an interesting film." },
-      { "word": "household", "ipa": "[ˈhaʊsˌhoʊld]", "pos": "adj.", "def": "家庭的", "sentence": "This brand is a household name." },
-      { "word": "huge", "ipa": "[hjudʒ]", "pos": "adj.", "def": "巨大的", "sentence": "The elephant is a huge animal." },
-      { "word": "immediate", "ipa": "[ɪˈmidiət]", "pos": "adj.", "def": "立即的", "sentence": "We need an immediate response." },
-      { "word": "island", "ipa": "[ˈaɪlənd]", "pos": "n.", "def": "島嶼", "sentence": "They live on a tropical island." },
-      { "word": "latest", "ipa": "[ˈleɪtəst]", "pos": "adj.", "def": "最新的", "sentence": "Have you seen the latest news?" },
-      { "word": "least", "ipa": "[list]", "pos": "adj.", "def": "最少", "sentence": "That was the least interesting part." },
-      { "word": "million", "ipa": "[ˈmɪljən]", "pos": "n.", "def": "百萬", "sentence": "She won a million dollars." },
-      { "word": "monthly", "ipa": "[ˈmʌnθli]", "pos": "adv.", "def": "每月的", "sentence": "I pay my bills monthly." },
-      { "word": "mutual", "ipa": "[ˈmjutʃuəl]", "pos": "adj.", "def": "相互的", "sentence": "Respect is a mutual feeling." },
-      { "word": "perform", "ipa": "[pərˈfɔrm]", "pos": "v.", "def": "表演", "sentence": "The band will perform live tonight." },
-      { "word": "predicted", "ipa": "[prɪˈdɪktəd]", "pos": "v.", "def": "預測 (過去式)", "sentence": "The weatherman predicted snow." },
-      { "word": "reason", "ipa": "[ˈrizən]", "pos": "n.", "def": "原因", "sentence": "What is the reason for your visit?" },
-      { "word": "relate", "ipa": "[rɪˈleɪt]", "pos": "v.", "def": "理解、共鳴", "sentence": "I can relate to your problem." },
-      { "word": "resonate", "ipa": "[ˈrezəˌneɪt]", "pos": "v.", "def": "引起共鳴", "sentence": "His speech resonated with the crowd." },
-      { "word": "Since", "ipa": "[sɪns]", "pos": "conj.", "def": "自從、因為", "sentence": "I haven't seen him since Monday." },
-      { "word": "Spotify", "ipa": "[ˈspɑtəˌfaɪ]", "pos": "n.", "def": "Spotify", "sentence": "I listen to music on Spotify." },
-      { "word": "stolen", "ipa": "[ˈstoʊlən]", "pos": "v.", "def": "偷走", "sentence": "My wallet was stolen yesterday." },
-      { "word": "streams", "ipa": "[strimz]", "pos": "n.", "def": "串流次數、溪流", "sentence": "The song has millions of streams." },
-      { "word": "studio", "ipa": "[ˈstudiˌoʊ]", "pos": "n.", "def": "錄音室", "sentence": "They recorded in a studio." },
-      { "word": "talents", "ipa": "[ˈtælənts]", "pos": "n.", "def": "天賦、才華", "sentence": "She has many artistic talents." }
+      {
+        "word": "triumph",
+        "ipa": "['traɪəmf]",
+        "pos": "n.",
+        "def": "勝利；成就；(因勝利而產生的) 喜悅；得意",
+        "sentence": "The team celebrated their triumph with a parade."
+      },
+      {
+        "word": "apply",
+        "ipa": "[ə'plaɪ]",
+        "pos": "vi.",
+        "def": "申請；報名",
+        "sentence": "He applied for a scholarship."
+      },
+      {
+        "word": "application",
+        "ipa": "[ˌæplə'keʃən]",
+        "pos": "n.",
+        "def": "申請；申請書",
+        "sentence": "The application deadline is next week."
+      },
+      {
+        "word": "applicant",
+        "ipa": "['æpləkənt]",
+        "pos": "n.",
+        "def": "申請人",
+        "sentence": "There were over fifty applicants for the position."
+      },
+      {
+        "word": "instrument",
+        "ipa": "['ɪnstrəmənt]",
+        "pos": "n.",
+        "def": "樂器；儀器；器具",
+        "sentence": "The piano is a popular musical instrument."
+      },
+      {
+        "word": "somehow",
+        "ipa": "['sʌmˌhaʊ]",
+        "pos": "adv.",
+        "def": "以某種方式；不知怎麼地",
+        "sentence": "Somehow, we managed to get there on time."
+      },
+      {
+        "word": "barely",
+        "ipa": "['bɛrlɪ]",
+        "pos": "adv.",
+        "def": "幾乎不",
+        "sentence": "He was so tired he could barely keep his eyes open."
+      },
+      {
+        "word": "bare",
+        "ipa": "[bɛr]",
+        "pos": "adj.",
+        "def": "赤裸的",
+        "sentence": "He walked on the sand with bare feet."
+      },
+      {
+        "word": "invaluable",
+        "ipa": "[ɪn'væljəb!]",
+        "pos": "adj.",
+        "def": "非常寶貴的",
+        "sentence": "His help was invaluable to the project."
+      },
+      {
+        "word": "encouragement",
+        "ipa": "[ɪn'kɝɪdʒmənt]",
+        "pos": "n.",
+        "def": "鼓勵；鼓舞",
+        "sentence": "Words of encouragement can make a big difference."
+      },
+      {
+        "word": "encourage",
+        "ipa": "[ɪn'kɝɪdʒ]",
+        "pos": "vt.",
+        "def": "鼓勵",
+        "sentence": "Parents should encourage their children to read."
+      },
+      {
+        "word": "discourage",
+        "ipa": "[dɪs'kɝɪdʒ]",
+        "pos": "vt.",
+        "def": "阻止；勸阻",
+        "sentence": "Do not let failure discourage you."
+      },
+      {
+        "word": "concert",
+        "ipa": "['kɑnsɚt]",
+        "pos": "n.",
+        "def": "音樂會",
+        "sentence": "The band played at a live concert."
+      },
+      {
+        "word": "receive",
+        "ipa": "[rɪ'siv]",
+        "pos": "vt.",
+        "def": "收到；獲得",
+        "sentence": "She received a letter from her friend."
+      },
+      {
+        "word": "dazzle",
+        "ipa": "['dæz!]",
+        "pos": "vt.",
+        "def": "使讚嘆；使傾倒；(強光) 使目眩；使眼花",
+        "sentence": "The bright lights dazzled my eyes."
+      },
+      {
+        "word": "potential",
+        "ipa": "[pə'tɛnʃəl]",
+        "pos": "n./adj.",
+        "def": "潛力；可能性；潛在的；可能的",
+        "sentence": "She has the potential to be a great artist."
+      },
+      {
+        "word": "scream",
+        "ipa": "[skrim]",
+        "pos": "n./vi.",
+        "def": "尖叫",
+        "sentence": "We heard a loud scream from the other room."
+      },
+      {
+        "word": "dizzy",
+        "ipa": "['dɪzɪ]",
+        "pos": "adj.",
+        "def": "頭暈目眩的",
+        "sentence": "The heat made me feel dizzy."
+      },
+      {
+        "word": "overseas",
+        "ipa": "[ˌovɚ'siz]",
+        "pos": "adv./adj.",
+        "def": "在海外；到海外；海外的",
+        "sentence": "He has lived overseas for ten years."
+      },
+      {
+        "word": "determination",
+        "ipa": "[dɪˌtɝmə'neʃən]",
+        "pos": "n.",
+        "def": "決心",
+        "sentence": "He succeeded through hard work and determination."
+      },
+      {
+        "word": "determine",
+        "ipa": "[dɪ'tɝmɪn]",
+        "pos": "vt.",
+        "def": "決定；影響",
+        "sentence": "The judge will determine the outcome of the case."
+      },
+      {
+        "word": "faith",
+        "ipa": "[feθ]",
+        "pos": "n.",
+        "def": "信心；信任",
+        "sentence": "Have faith in yourself."
+      },
+      {
+        "word": "faithful",
+        "ipa": "['feθfəl]",
+        "pos": "adj.",
+        "def": "忠誠的；忠實的",
+        "sentence": "Dogs are known as faithful companions."
+      },
+      {
+        "word": "pursue",
+        "ipa": "[pə'su]",
+        "pos": "vt.",
+        "def": "追求；從事；追逐；追捕",
+        "sentence": "He decided to pursue his dream of becoming an actor."
+      },
+      {
+        "word": "pursuit",
+        "ipa": "[pə'sut]",
+        "pos": "n.",
+        "def": "追求",
+        "sentence": "They spent hours in pursuit of the truth."
+      },
+      {
+        "word": "tons of",
+        "ipa": "",
+        "pos": "phr.",
+        "def": "大量；許多",
+        "sentence": "There are tons of reasons to visit Taiwan."
+      },
+      {
+        "word": "look for",
+        "ipa": "",
+        "pos": "phr.",
+        "def": "尋找",
+        "sentence": "She is looking for a new job."
+      },
+      {
+        "word": "make a living",
+        "ipa": "",
+        "pos": "phr.",
+        "def": "謀生",
+        "sentence": "He makes a living by selling cars."
+      },
+      {
+        "word": "look forward to",
+        "ipa": "",
+        "pos": "phr.",
+        "def": "期待",
+        "sentence": "We look forward to your visit."
+      },
+      {
+        "word": "be carried away",
+        "ipa": "",
+        "pos": "phr.",
+        "def": "(1) 陶醉 (2) 激動得無法自持",
+        "sentence": "The crowd got carried away by the music."
+      },
+      {
+        "word": "come out of",
+        "ipa": "",
+        "pos": "phr.",
+        "def": "由……產生",
+        "sentence": "Great ideas often come out of simple questions."
+      },
+      {
+        "word": "as soon as",
+        "ipa": "",
+        "pos": "phr.",
+        "def": "一……就……",
+        "sentence": "I will tell him as soon as I see him."
+      }
     ]
   },
   {
-    "title": "Super Dogs Find Water Leaks",
+    "title": "第八課基本單字",
     "words": [
-      { "word": "as deep as", "ipa": "[æz dip æz]", "pos": "phr.", "def": "深達", "sentence": "The water is as deep as the ocean." },
-      { "word": "break underground", "ipa": "[breɪk ˌʌndərˈɡraʊnd]", "pos": "phr.", "def": "在地下破裂", "sentence": "Pipes often break underground." },
-      { "word": "capable of", "ipa": "[ˈkeɪpəbəl ʌv]", "pos": "phr.", "def": "能夠", "sentence": "He is capable of running fast." },
-      { "word": "chemical", "ipa": "[ˈkemɪkəl]", "pos": "n.", "def": "化學物質", "sentence": "Be careful with that chemical." },
-      { "word": "chlorine", "ipa": "[ˈklɔrin]", "pos": "n.", "def": "氯", "sentence": "There is chlorine in the swimming pool." },
-      { "word": "clever", "ipa": "[ˈklevər]", "pos": "adj.", "def": "聰明的", "sentence": "The clever dog learned a new trick." },
-      { "word": "detect", "ipa": "[dɪˈtekt]", "pos": "v.", "def": "偵測", "sentence": "The machine can detect smoke." },
-      { "word": "dig up", "ipa": "[dɪɡ ʌp]", "pos": "phr.", "def": "挖出", "sentence": "The dog tried to dig up a bone." },
-      { "word": "exact", "ipa": "[ɪɡˈzækt]", "pos": "adj.", "def": "確切的", "sentence": "I need the exact measurements." },
-      { "word": "fix", "ipa": "[fɪks]", "pos": "v.", "def": "修理", "sentence": "Can you fix my bike?" },
-      { "word": "France", "ipa": "[fræns]", "pos": "n.", "def": "法國", "sentence": "Paris is in France." },
-      { "word": "however", "ipa": "[haʊˈevər]", "pos": "adv.", "def": "然而", "sentence": "It was cold; however, we went out." },
-      { "word": "important", "ipa": "[ɪmˈpɔrtənt]", "pos": "adj.", "def": "重要的", "sentence": "Water is important for life." },
-      { "word": "leak", "ipa": "[lik]", "pos": "v.", "def": "洩漏", "sentence": "The roof started to leak." },
-      { "word": "locate", "ipa": "[ˈloʊkeɪt]", "pos": "v.", "def": "找出位置", "sentence": "Can you locate the store?" },
-      { "word": "mark", "ipa": "[mɑrk]", "pos": "v.", "def": "標記", "sentence": "Please mark the correct answer." },
-      { "word": "may", "ipa": "[meɪ]", "pos": "aux.", "def": "可能 (與 possible 相似)", "sentence": "It may rain later today." },
-      { "word": "moreover", "ipa": "[mɔrˈoʊvər]", "pos": "adv.", "def": "此外", "sentence": "The car is fast; moreover, it is cheap." },
-      { "word": "once", "ipa": "[wʌns]", "pos": "adv.", "def": "一旦", "sentence": "Once you start, don't stop." },
-      { "word": "powerful", "ipa": "[ˈpaʊərfəl]", "pos": "adj.", "def": "強而有力的", "sentence": "The engine is very powerful." },
-      { "word": "prevent", "ipa": "[prɪˈvent]", "pos": "v.", "def": "預防", "sentence": "Wash hands to prevent illness." },
-      { "word": "reach", "ipa": "[ritʃ]", "pos": "v.", "def": "到達", "sentence": "We will reach the top soon." },
-      { "word": "shortage", "ipa": "[ˈʃɔrtɪdʒ]", "pos": "n.", "def": "短缺", "sentence": "There is a shortage of food." },
-      { "word": "sniff out", "ipa": "[snɪf aʊt]", "pos": "phr.", "def": "嗅；聞", "sentence": "Dogs can sniff out hidden items." },
-      { "word": "spot", "ipa": "[spɑt]", "pos": "n.", "def": "地點", "sentence": "This is a nice spot for a picnic." },
-      { "word": "sense of smell", "ipa": "[sens ʌv smel]", "pos": "phr.", "def": "嗅覺", "sentence": "Dogs have a good sense of smell." },
-      { "word": "tap water", "ipa": "[tæp ˈwɔtər]", "pos": "n.", "def": "自來水", "sentence": "Is the tap water safe?" },
-      { "word": "traditional", "ipa": "[trəˈdɪʃənəl]", "pos": "adj.", "def": "傳統的", "sentence": "They wore traditional clothes." },
-      { "word": "train", "ipa": "[treɪn]", "pos": "v.", "def": "訓練", "sentence": "Athletes train every day." },
-      { "word": "turns into", "ipa": "[tɜrnz ˈɪntu]", "pos": "phr.", "def": "轉變為", "sentence": "Water turns into ice." }
+      {
+        "word": "familiar",
+        "ipa": "[fə'mɪljɚ]",
+        "pos": "adj.",
+        "def": "熟悉的",
+        "sentence": "The song sounds familiar."
+      },
+      {
+        "word": "urge",
+        "ipa": "[ɝdʒ]",
+        "pos": "n./vt.",
+        "def": "衝動；催促",
+        "sentence": "I urged him to drive carefully."
+      },
+      {
+        "word": "strategy",
+        "ipa": "['strætədʒɪ]",
+        "pos": "n.",
+        "def": "策略",
+        "sentence": "Chess is a game of strategy."
+      },
+      {
+        "word": "visible",
+        "ipa": "['vɪzəb!]",
+        "pos": "adj.",
+        "def": "看得見的",
+        "sentence": "The stars are visible tonight."
+      },
+      {
+        "word": "purchase",
+        "ipa": "['pɝtʃəs]",
+        "pos": "vt./n.",
+        "def": "購買",
+        "sentence": "She purchased a ticket for the train."
+      },
+      {
+        "word": "profitable",
+        "ipa": "['prɑfɪtəb!]",
+        "pos": "adj.",
+        "def": "有利潤的",
+        "sentence": "The business became very profitable."
+      },
+      {
+        "word": "profit",
+        "ipa": "['prɑfɪt]",
+        "pos": "vi./n.",
+        "def": "獲得好處；利潤",
+        "sentence": "The company made a huge profit this year."
+      },
+      {
+        "word": "similarly",
+        "ipa": "['sɪməlɚlɪ]",
+        "pos": "adv.",
+        "def": "同樣地；相似地",
+        "sentence": "Similarly, we must consider the cost."
+      },
+      {
+        "word": "similar",
+        "ipa": "['sɪməlɚ]",
+        "pos": "adj.",
+        "def": "相似的",
+        "sentence": "Your taste in music is similar to mine."
+      },
+      {
+        "word": "similarity",
+        "ipa": "[ˌsɪmə'lærətɪ]",
+        "pos": "n.",
+        "def": "相似性；相似處",
+        "sentence": "There are many similarities between the two languages."
+      },
+      {
+        "word": "aim",
+        "ipa": "[em]",
+        "pos": "vt./n.",
+        "def": "針對；對象是；目的；目標",
+        "sentence": "My main aim is to finish college."
+      },
+      {
+        "word": "impulse",
+        "ipa": "['ɪmpʌls]",
+        "pos": "n.",
+        "def": "衝動",
+        "sentence": "Resist the impulse to check your phone."
+      },
+      {
+        "word": "display",
+        "ipa": "[dɪ'sple]",
+        "pos": "vt./n.",
+        "def": "展示；陳列；展覽",
+        "sentence": "The museum displays ancient artifacts."
+      },
+      {
+        "word": "offer",
+        "ipa": "['ɔfɚ]",
+        "pos": "n./vt.",
+        "def": "特價；提供",
+        "sentence": "The hotel offers free breakfast."
+      },
+      {
+        "word": "customer",
+        "ipa": "['kʌstəmɚ]",
+        "pos": "n.",
+        "def": "顧客；客戶",
+        "sentence": "The customer is always right."
+      },
+      {
+        "word": "advantage",
+        "ipa": "[əd'væntɪdʒ]",
+        "pos": "n.",
+        "def": "優勢；有利條件",
+        "sentence": "He took advantage of the good weather to go hiking."
+      },
+      {
+        "word": "eventually",
+        "ipa": "[ɪ'vɛntʃʊəlɪ]",
+        "pos": "adv.",
+        "def": "最後",
+        "sentence": "The rain stopped eventually."
+      },
+      {
+        "word": "eventual",
+        "ipa": "[ɪ'vɛntʃʊəl]",
+        "pos": "adj.",
+        "def": "最後的",
+        "sentence": "The eventual result was a tie."
+      },
+      {
+        "word": "trap",
+        "ipa": "[træp]",
+        "pos": "n./vt.",
+        "def": "圈套；困住",
+        "sentence": "They were trapped in the elevator."
+      },
+      {
+        "word": "aware",
+        "ipa": "[ə'wɛr]",
+        "pos": "adj.",
+        "def": "知道；意識到",
+        "sentence": "Are you aware of the rules?"
+      },
+      {
+        "word": "awareness",
+        "ipa": "[ə'wɛrnəs]",
+        "pos": "n.",
+        "def": "意識；認識",
+        "sentence": "The campaign raised public awareness of the disease."
+      },
+      {
+        "word": "clever",
+        "ipa": "['klɛvɚ]",
+        "pos": "adj.",
+        "def": "聰明的",
+        "sentence": "She is a clever girl."
+      },
+      {
+        "word": "be likely to",
+        "ipa": "",
+        "pos": "phr.",
+        "def": "有可能會",
+        "sentence": "Prices are likely to rise soon."
+      },
+      {
+        "word": "within reach",
+        "ipa": "",
+        "pos": "phr.",
+        "def": "在 (……) 伸手可及的範圍內",
+        "sentence": "Success is within your reach."
+      },
+      {
+        "word": "line up",
+        "ipa": "",
+        "pos": "phr.",
+        "def": "排隊",
+        "sentence": "The students lined up for lunch."
+      },
+      {
+        "word": "take advantage of",
+        "ipa": "",
+        "pos": "phr.",
+        "def": "利用",
+        "sentence": "He took advantage of the sale to buy a new coat."
+      },
+      {
+        "word": "set up",
+        "ipa": "",
+        "pos": "phr.",
+        "def": "設立；設置",
+        "sentence": "They set up a tent in the forest."
+      },
+      {
+        "word": "start off",
+        "ipa": "",
+        "pos": "phr.",
+        "def": "開始",
+        "sentence": "The meeting started off with a joke."
+      }
     ]
   },
   {
-    "title": "The Salty Story of the Dead Sea",
+    "title": "第九課基本單字",
     "words": [
-      { "word": "Actually", "ipa": "[ˈæktʃuəli]", "pos": "adv.", "def": "實際上", "sentence": "Actually, I prefer tea." },
-      { "word": "as though", "ipa": "[æz ðoʊ]", "pos": "phr.", "def": "彷彿", "sentence": "He looked as though he was tired." },
-      { "word": "couch", "ipa": "[kaʊtʃ]", "pos": "n.", "def": "沙發", "sentence": "I sat on the couch." },
-      { "word": "deserts", "ipa": "[ˈdezərts]", "pos": "n.", "def": "沙漠", "sentence": "Camels live in deserts." },
-      { "word": "evaporates", "ipa": "[ɪˈvæpəˌreɪts]", "pos": "v.", "def": "蒸發", "sentence": "Water evaporates in the sun." },
-      { "word": "experience", "ipa": "[ɪkˈspɪriəns]", "pos": "n.", "def": "體驗", "sentence": "It was a wonderful experience." },
-      { "word": "flowing into", "ipa": "[ˈfloʊɪŋ ˈɪntu]", "pos": "phr.", "def": "流入", "sentence": "The river is flowing into the sea." },
-      { "word": "landlocked", "ipa": "[ˈlændˌlɑkt]", "pos": "adj.", "def": "被陸地包圍的", "sentence": "Switzerland is landlocked." },
-      { "word": "lie", "ipa": "[laɪ]", "pos": "v.", "def": "躺", "sentence": "I like to lie on the grass." },
-      { "word": "ocean", "ipa": "[ˈoʊʃən]", "pos": "n.", "def": "海洋", "sentence": "The ocean is vast and blue." },
-      { "word": "rocks", "ipa": "[rɑks]", "pos": "n.", "def": "岩石", "sentence": "We climbed over the rocks." },
-      { "word": "salt", "ipa": "[sɔlt]", "pos": "n.", "def": "鹽", "sentence": "Please pass the salt." },
-      { "word": "saltier", "ipa": "[ˈsɔltiər]", "pos": "adj.", "def": "更鹹的", "sentence": "This soup tastes saltier." },
-      { "word": "Since", "ipa": "[sɪns]", "pos": "conj.", "def": "因為、自從", "sentence": "Since it rained, we stayed in." },
-      { "word": "strange", "ipa": "[streɪndʒ]", "pos": "adj.", "def": "奇怪的", "sentence": "That is a strange sound." },
-      { "word": "Surprisingly", "ipa": "[sərˈpraɪzɪŋli]", "pos": "adv.", "def": "令人驚訝地", "sentence": "Surprisingly, he won." },
-      { "word": "survive", "ipa": "[sərˈvaɪv]", "pos": "v.", "def": "生存", "sentence": "Animals need water to survive." },
-      { "word": "themselves", "ipa": "[ðəmˈselvz]", "pos": "pron.", "def": "他們自己", "sentence": "They did it themselves." },
-      { "word": "Therefore", "ipa": "[ˈðerˌfɔr]", "pos": "adv.", "def": "因此", "sentence": "I was sick; therefore, I stayed home." },
-      { "word": "truly", "ipa": "[ˈtruli]", "pos": "adv.", "def": "真正地", "sentence": "I am truly sorry." },
-      { "word": "vapor", "ipa": "[ˈveɪpər]", "pos": "n.", "def": "水氣", "sentence": "Water vapor rises." },
-      { "word": "West Bank", "ipa": "[west bæŋk]", "pos": "n.", "def": "西岸地區", "sentence": "It is near the West Bank." },
-      { "word": "until", "ipa": "[ənˈtɪl]", "pos": "conj.", "def": "直到", "sentence": "Wait until I return." }
-    ]
-  },
-  {
-    "title": "Smangus: Ancient Forest (Part 2)",
-    "words": [
-      { "word": "Along", "ipa": "[əˈlɔŋ]", "pos": "prep.", "def": "沿著", "sentence": "We walked along the river." },
-      { "word": "Although", "ipa": "[ɔlˈðoʊ]", "pos": "conj.", "def": "雖然 (與 While 相似)", "sentence": "Although it rained, we played." },
-      { "word": "among", "ipa": "[əˈmʌŋ]", "pos": "prep.", "def": "在...之中", "sentence": "He sat among friends." },
-      { "word": "asleep", "ipa": "[əˈslip]", "pos": "adj.", "def": "睡著的", "sentence": "The baby is fast asleep." },
-      { "word": "Atayal", "ipa": "[əˈtaɪjəl]", "pos": "n.", "def": "泰雅族", "sentence": "The Atayal people are indigenous." },
-      { "word": "bamboo", "ipa": "[bæmˈbu]", "pos": "n.", "def": "竹子", "sentence": "Pandas eat bamboo." },
-      { "word": "bird-watchers", "ipa": "[bɜrd ˈwɑtʃərz]", "pos": "n.", "def": "賞鳥者", "sentence": "Bird-watchers enjoy nature." },
-      { "word": "breeze", "ipa": "[briz]", "pos": "n.", "def": "微風", "sentence": "A cool breeze blew." },
-      { "word": "decision", "ipa": "[dɪˈsɪʒən]", "pos": "n.", "def": "決定", "sentence": "He made a quick decision." },
-      { "word": "deep", "ipa": "[dip]", "pos": "adj.", "def": "深處的", "sentence": "They went deep into the woods." },
-      { "word": "destination", "ipa": "[ˌdestəˈneɪʃən]", "pos": "n.", "def": "目的地", "sentence": "We reached our destination." },
-      { "word": "Ecological", "ipa": "[ˌikoʊˈlɑdʒɪkəl]", "pos": "adj.", "def": "生態的", "sentence": "Ecological protection is key." },
-      { "word": "environment", "ipa": "[ɪnˈvaɪrənmənt]", "pos": "n.", "def": "環境", "sentence": "Protect the environment." },
-      { "word": "especially", "ipa": "[ɪˈspeʃəli]", "pos": "adv.", "def": "尤其 (與 particularly 相似)", "sentence": "I like fruit, especially apples." },
-      { "word": "exactly", "ipa": "[ɪɡˈzæktli]", "pos": "adv.", "def": "正是", "sentence": "That is exactly right." },
-      { "word": "farmland", "ipa": "[ˈfɑrmˌlænd]", "pos": "n.", "def": "農田", "sentence": "The farmland is green." },
-      { "word": "fertile", "ipa": "[ˈfɜrtəl]", "pos": "adj.", "def": "肥沃的", "sentence": "The soil is fertile." },
-      { "word": "finally", "ipa": "[ˈfaɪnəli]", "pos": "adv.", "def": "終於", "sentence": "Finally, we arrived." },
-      { "word": "forest", "ipa": "[ˈfɔrəst]", "pos": "n.", "def": "森林", "sentence": "Bears live in the forest." },
-      { "word": "hesitation", "ipa": "[ˌhezəˈteɪʃən]", "pos": "n.", "def": "猶豫", "sentence": "He answered without hesitation." },
-      { "word": "hike", "ipa": "[haɪk]", "pos": "v.", "def": "健行", "sentence": "We plan to hike." },
-      { "word": "Hsinchu", "ipa": "[ˈʃɪnˈtʃu]", "pos": "n.", "def": "新竹", "sentence": "Hsinchu is windy." },
-      { "word": "Koraw", "ipa": "[koʊˈraʊ]", "pos": "n.", "def": "科拉（地名）", "sentence": "Koraw is beautiful." },
-      { "word": "landscapes", "ipa": "[ˈlændˌskeɪps]", "pos": "n.", "def": "風景", "sentence": "The landscapes are nice." },
-      { "word": "last-minute", "ipa": "[læst ˈmɪnət]", "pos": "adj.", "def": "最後一刻", "sentence": "A last-minute change." },
-      { "word": "leaves", "ipa": "[livz]", "pos": "n.", "def": "葉子", "sentence": "Leaves turn red in fall." },
-      { "word": "mountain", "ipa": "[ˈmaʊntən]", "pos": "n.", "def": "山", "sentence": "The mountain is high." },
-      { "word": "notice", "ipa": "[ˈnoʊtɪs]", "pos": "v.", "def": "注意到", "sentence": "Did you notice that?" },
-      { "word": "observe", "ipa": "[əbˈzɜrv]", "pos": "v.", "def": "觀察", "sentence": "Scientists observe stars." },
-      { "word": "offered", "ipa": "[ˈɔfərd]", "pos": "v.", "def": "提供", "sentence": "He offered to help." },
-      { "word": "originally", "ipa": "[əˈrɪdʒənəli]", "pos": "adv.", "def": "起初", "sentence": "It was originally blue." },
-      { "word": "outdoor", "ipa": "[ˈaʊtˌdɔr]", "pos": "adj.", "def": "戶外的", "sentence": "We like outdoor fun." },
-      { "word": "Park", "ipa": "[pɑrk]", "pos": "n.", "def": "公園", "sentence": "Let's go to the park." },
-      { "word": "peaceful", "ipa": "[ˈpisfl]", "pos": "adj.", "def": "平靜的", "sentence": "It is very peaceful." },
-      { "word": "pink", "ipa": "[pɪŋk]", "pos": "adj.", "def": "粉紅色", "sentence": "She wore pink." },
-      { "word": "quite", "ipa": "[kwaɪt]", "pos": "adv.", "def": "相當", "sentence": "It is quite cold." },
-      { "word": "refers", "ipa": "[rɪˈfɜrz]", "pos": "v.", "def": "指的是", "sentence": "This refers to a plant." },
-      { "word": "ride", "ipa": "[raɪd]", "pos": "n.", "def": "旅程", "sentence": "The ride was long." },
-      { "word": "rise", "ipa": "[raɪz]", "pos": "v.", "def": "升起", "sentence": "The sun will rise." },
-      { "word": "roads", "ipa": "[roʊdz]", "pos": "n.", "def": "道路", "sentence": "The roads are wet." },
-      { "word": "roofs", "ipa": "[rufs]", "pos": "n.", "def": "屋頂", "sentence": "Red roofs." },
-      { "word": "rough", "ipa": "[rʌf]", "pos": "adj.", "def": "崎嶇的", "sentence": "The road was rough." },
-      { "word": "satisfied", "ipa": "[ˈsætəsˌfaɪd]", "pos": "adj.", "def": "滿意的", "sentence": "I am satisfied." },
-      { "word": "selection", "ipa": "[səˈlekʃən]", "pos": "n.", "def": "選擇", "sentence": "Good selection of food." },
-      { "word": "shady", "ipa": "[ˈʃeɪdi]", "pos": "adj.", "def": "蔭涼的", "sentence": "A shady spot." },
-      { "word": "sharp", "ipa": "[ʃɑrp]", "pos": "adj.", "def": "急劇的", "sentence": "A sharp turn." },
-      { "word": "Smangus", "ipa": "[səˈmæŋɡəs]", "pos": "n.", "def": "司馬庫斯", "sentence": "Smangus is a tribe." },
-      { "word": "spot", "ipa": "[spɑt]", "pos": "n.", "def": "地點", "sentence": "X marks the spot." },
-      { "word": "streams", "ipa": "[strimz]", "pos": "n.", "def": "溪流、串流次數", "sentence": "Streams flow to rivers." },
-      { "word": "toward", "ipa": "[tɔrd]", "pos": "prep.", "def": "朝向", "sentence": "He walked toward me." },
-      { "word": "Trail", "ipa": "[treɪl]", "pos": "n.", "def": "步道", "sentence": "We hiked the trail." },
-      { "word": "until", "ipa": "[ənˈtɪl]", "pos": "conj.", "def": "直到", "sentence": "Wait until green." },
-      { "word": "village", "ipa": "[ˈvɪlɪdʒ]", "pos": "n.", "def": "村落", "sentence": "A small village." },
-      { "word": "wildlife", "ipa": "[ˈwaɪldˌlaɪf]", "pos": "n.", "def": "野生生物", "sentence": "Lots of wildlife." }
-    ]
-  },
-  {
-    "title": "Hot Tech, Cool Ideas",
-    "words": [
-      { "word": "achieve", "ipa": "[əˈtʃiv]", "pos": "v.", "def": "達成", "sentence": "Work hard to achieve goals." },
-      { "word": "agriculture", "ipa": "[ˈæɡrɪˌkʌltʃər]", "pos": "n.", "def": "農業", "sentence": "Agriculture feeds us." },
-      { "word": "although", "ipa": "[ɔlˈðoʊ]", "pos": "conj.", "def": "雖然 (與 While 相似)", "sentence": "Although young, he is smart." },
-      { "word": "approach", "ipa": "[əˈproʊtʃ]", "pos": "n.", "def": "方法", "sentence": "A new approach." },
-      { "word": "attractive", "ipa": "[əˈtræktɪv]", "pos": "adj.", "def": "吸引人的", "sentence": "An attractive offer." },
-      { "word": "conditions", "ipa": "[kənˈdɪʃənz]", "pos": "n.", "def": "條件", "sentence": "Good conditions." },
-      { "word": "cooling", "ipa": "[ˈkulɪŋ]", "pos": "n.", "def": "冷卻", "sentence": "The cooling system." },
-      { "word": "dealing", "ipa": "[ˈdilɪŋ]", "pos": "v.", "def": "處理", "sentence": "Dealing with problems." },
-      { "word": "decade", "ipa": "[ˈdekeɪd]", "pos": "n.", "def": "十年", "sentence": "A decade is ten years." },
-      { "word": "demonstrated", "ipa": "[ˈdemənˌstreɪtəd]", "pos": "v.", "def": "證明 (與 proves 相似)", "sentence": "She demonstrated it." },
-      { "word": "denying", "ipa": "[dɪˈnaɪɪŋ]", "pos": "v.", "def": "否認", "sentence": "No denying it." },
-      { "word": "development", "ipa": "[dɪˈveləpmənt]", "pos": "n.", "def": "發展", "sentence": "Tech development." },
-      { "word": "directly", "ipa": "[dɪˈrektli]", "pos": "adv.", "def": "直接", "sentence": "Go directly home." },
-      { "word": "electricity", "ipa": "[ɪˌlekˈtrɪsəti]", "pos": "n.", "def": "電力", "sentence": "We need electricity." },
-      { "word": "Finland", "ipa": "[ˈfɪnlənd]", "pos": "n.", "def": "芬蘭", "sentence": "Finland is cold." },
-      { "word": "further", "ipa": "[ˈfɜrðər]", "pos": "adv.", "def": "進一步", "sentence": "For further information, call us." },
-      { "word": "harness", "ipa": "[ˈhɑrnəs]", "pos": "v.", "def": "利用", "sentence": "Harness the wind." },
-      { "word": "imported", "ipa": "[ɪmˈpɔrtəd]", "pos": "v.", "def": "進口", "sentence": "Imported goods." },
-      { "word": "inefficient", "ipa": "[ˌɪnɪˈfɪʃənt]", "pos": "adj.", "def": "低效", "sentence": "Inefficient engine." },
-      { "word": "instead", "ipa": "[ɪnˈsted]", "pos": "adv.", "def": "代替", "sentence": "Water instead of soda." },
-      { "word": "literally", "ipa": "[ˈlɪtərəli]", "pos": "adv.", "def": "字面上", "sentence": "He literally ran." },
-      { "word": "majority", "ipa": "[məˈdʒɔrəti]", "pos": "n.", "def": "大多數", "sentence": "The majority agree." },
-      { "word": "Mäntsälä", "ipa": "[ˈmæntsələ]", "pos": "n.", "def": "曼采萊", "sentence": "A town in Finland." },
-      { "word": "nearby", "ipa": "[ˌnɪrˈbaɪ]", "pos": "adj.", "def": "附近", "sentence": "A store nearby." },
-      { "word": "obvious", "ipa": "[ˈɑbviəs]", "pos": "adj.", "def": "明顯", "sentence": "It is obvious." },
-      { "word": "pack", "ipa": "[pæk]", "pos": "v.", "def": "擠滿", "sentence": "Fans pack the stadium." },
-      { "word": "particularly", "ipa": "[pərˈtɪkjələli]", "pos": "adv.", "def": "尤其 (與 especially 相似)", "sentence": "Particularly cold." },
-      { "word": "Perhaps", "ipa": "[pərˈhæps]", "pos": "adv.", "def": "也許", "sentence": "Perhaps tomorrow." },
-      { "word": "possible", "ipa": "[ˈpɑsəbəl]", "pos": "adj.", "def": "可能 (與 may 相似)", "sentence": "It is possible." },
-      { "word": "proves", "ipa": "[pruvz]", "pos": "v.", "def": "證明 (與 demonstrated 相似)", "sentence": "It proves he is right." },
-      { "word": "race ahead", "ipa": "[reɪs əˈhed]", "pos": "phr.", "def": "超前", "sentence": "He raced ahead." },
-      { "word": "Recycling", "ipa": "[riˈsaɪklɪŋ]", "pos": "n.", "def": "回收", "sentence": "Recycling helps." },
-      { "word": "rid", "ipa": "[rɪd]", "pos": "v.", "def": "擺脫", "sentence": "Get rid of it." },
-      { "word": "scale", "ipa": "[skeɪl]", "pos": "n.", "def": "規模", "sentence": "Large scale." },
-      { "word": "soaring", "ipa": "[ˈsɔrɪŋ]", "pos": "adj.", "def": "飆升", "sentence": "Prices are soaring." },
-      { "word": "Solve", "ipa": "[sɑlv]", "pos": "v.", "def": "解決", "sentence": "Solve the problem." },
-      { "word": "Sweden", "ipa": "[ˈswidən]", "pos": "n.", "def": "瑞典", "sentence": "Sweden is in Europe." },
-      { "word": "technology", "ipa": "[tekˈnɑlədʒi]", "pos": "n.", "def": "科技", "sentence": "Modern technology." },
-      { "word": "through", "ipa": "[θru]", "pos": "prep.", "def": "透過", "sentence": "Through practice." },
-      { "word": "typically", "ipa": "[ˈtɪpɪkli]", "pos": "adv.", "def": "通常", "sentence": "Typically hot." },
-      { "word": "unclear", "ipa": "[ˌʌnˈklɪr]", "pos": "adj.", "def": "不清楚", "sentence": "It is unclear." },
-      { "word": "warm", "ipa": "[wɔrm]", "pos": "v.", "def": "加熱", "sentence": "Warm it up." },
-      { "word": "Waste-Heat", "ipa": "[weɪst hit]", "pos": "n.", "def": "廢熱", "sentence": "Reuse waste-heat." },
-      { "word": "wherever", "ipa": "[werˈevər]", "pos": "adv.", "def": "無論", "sentence": "Go wherever." },
-      { "word": "Whether", "ipa": "[ˈweðər]", "pos": "conj.", "def": "是否", "sentence": "Whether to go." },
-      { "word": "While", "ipa": "[waɪl]", "pos": "conj.", "def": "雖然 (與 although 相似)", "sentence": "While nice, it is pricey." }
+      {
+        "word": "detailed",
+        "ipa": "['diteled]",
+        "pos": "adj.",
+        "def": "詳細的；細緻的",
+        "sentence": "He gave a detailed explanation."
+      },
+      {
+        "word": "detail",
+        "ipa": "['ditel]",
+        "pos": "n.",
+        "def": "細節",
+        "sentence": "Don't worry about the small details."
+      },
+      {
+        "word": "mess",
+        "ipa": "[mɛs]",
+        "pos": "n.",
+        "def": "凌亂；髒亂",
+        "sentence": "Your room is a mess."
+      },
+      {
+        "word": "messy",
+        "ipa": "['mɛsɪ]",
+        "pos": "adj.",
+        "def": "凌亂的；髒亂的",
+        "sentence": "Painting can be a messy job."
+      },
+      {
+        "word": "express",
+        "ipa": "[ɪk'sprɛs]",
+        "pos": "vt.",
+        "def": "表達",
+        "sentence": "Words cannot express how happy I am."
+      },
+      {
+        "word": "expression",
+        "ipa": "[ɪk'sprɛʃən]",
+        "pos": "n.",
+        "def": "表達",
+        "sentence": "Her face had a sad expression."
+      },
+      {
+        "word": "opinion",
+        "ipa": "[ə'pɪnjən]",
+        "pos": "n.",
+        "def": "想法；意見",
+        "sentence": "Everyone is entitled to their own opinion."
+      },
+      {
+        "word": "contrast",
+        "ipa": "[kən'træst]",
+        "pos": "vt./n.",
+        "def": "對比；對照",
+        "sentence": "There is a sharp contrast between rich and poor."
+      },
+      {
+        "word": "horror",
+        "ipa": "['hɔrɚ]",
+        "pos": "n.",
+        "def": "可怕；恐怖；恐懼",
+        "sentence": "He looked at the scene in horror."
+      },
+      {
+        "word": "horrible",
+        "ipa": "['hɔrəb!]",
+        "pos": "adj.",
+        "def": "可怕的；令人害怕的",
+        "sentence": "The traffic was horrible today."
+      },
+      {
+        "word": "horrify",
+        "ipa": "['hɔrəˌfaɪ]",
+        "pos": "vt.",
+        "def": "使人恐懼；驚嚇",
+        "sentence": "The ghost story horrified the children."
+      },
+      {
+        "word": "innocence",
+        "ipa": "['ɪnəsns]",
+        "pos": "n.",
+        "def": "無辜；清白；純真",
+        "sentence": "She maintained her innocence throughout the trial."
+      },
+      {
+        "word": "innocent",
+        "ipa": "['ɪnəsnt]",
+        "pos": "adj.",
+        "def": "無辜的；純真的",
+        "sentence": "He was found innocent of the crime."
+      },
+      {
+        "word": "violence",
+        "ipa": "['vaɪələns]",
+        "pos": "n.",
+        "def": "暴力",
+        "sentence": "Violence is never the answer."
+      },
+      {
+        "word": "violent",
+        "ipa": "['vaɪələnt]",
+        "pos": "adj.",
+        "def": "暴力的",
+        "sentence": "The storm was very violent."
+      },
+      {
+        "word": "visual",
+        "ipa": "['vɪʒʊəl]",
+        "pos": "adj.",
+        "def": "視覺的",
+        "sentence": "The movie has amazing visual effects."
+      },
+      {
+        "word": "pollution",
+        "ipa": "[pə'luʃən]",
+        "pos": "n.",
+        "def": "污染",
+        "sentence": "Air pollution is a serious problem in big cities."
+      },
+      {
+        "word": "pollute",
+        "ipa": "[pə'lut]",
+        "pos": "vt.",
+        "def": "污染",
+        "sentence": "Factories pollute the air with smoke."
+      },
+      {
+        "word": "permission",
+        "ipa": "[pɚ'mɪʃən]",
+        "pos": "n.",
+        "def": "許可；准許",
+        "sentence": "You need permission to enter this area."
+      },
+      {
+        "word": "permit",
+        "ipa": "[pɚ'mɪt]",
+        "pos": "vt.",
+        "def": "許可；准許",
+        "sentence": "Smoking is not permitted here."
+      },
+      {
+        "word": "effort",
+        "ipa": "['ɛfɚt]",
+        "pos": "n.",
+        "def": "努力",
+        "sentence": "She put a lot of effort into her studies."
+      },
+      {
+        "word": "community",
+        "ipa": "[kə'mjunətɪ]",
+        "pos": "n.",
+        "def": "社區",
+        "sentence": "He is a respected member of the community."
+      },
+      {
+        "word": "associate",
+        "ipa": "[ə'soʃɪˌet]",
+        "pos": "vt.",
+        "def": "聯想",
+        "sentence": "I associate the smell of cookies with my grandmother."
+      },
+      {
+        "word": "association",
+        "ipa": "[əˌsosɪ'eʃən]",
+        "pos": "n.",
+        "def": "聯想",
+        "sentence": "They formed an association to help the poor."
+      },
+      {
+        "word": "criminal",
+        "ipa": "['krɪmən!]",
+        "pos": "adj./n.",
+        "def": "犯罪的；罪犯",
+        "sentence": "The police caught the criminal."
+      },
+      {
+        "word": "crime",
+        "ipa": "[kraɪm]",
+        "pos": "n.",
+        "def": "犯罪行為",
+        "sentence": "He was punished for his crime."
+      },
+      {
+        "word": "destructive",
+        "ipa": "[dɪ'strʌktɪv]",
+        "pos": "adj.",
+        "def": "破壞性的；毀滅性的",
+        "sentence": "Nuclear weapons are extremely destructive."
+      },
+      {
+        "word": "destroy",
+        "ipa": "[dɪ'strɔɪ]",
+        "pos": "vt.",
+        "def": "破壞；毀滅",
+        "sentence": "The earthquake destroyed many homes."
+      },
+      {
+        "word": "destruction",
+        "ipa": "[dɪ'strʌkʃən]",
+        "pos": "n.",
+        "def": "破壞；毀滅",
+        "sentence": "The storm left a trail of destruction."
+      },
+      {
+        "word": "come in",
+        "ipa": "",
+        "pos": "phr.",
+        "def": "具有 (形狀、尺寸等)",
+        "sentence": "These shoes come in different sizes."
+      },
+      {
+        "word": "stand for",
+        "ipa": "",
+        "pos": "phr.",
+        "def": "代表",
+        "sentence": "The dove stands for peace."
+      },
+      {
+        "word": "nothing but",
+        "ipa": "",
+        "pos": "phr.",
+        "def": "只不過是；僅僅",
+        "sentence": "The box contained nothing but old papers."
+      },
+      {
+        "word": "get rid of",
+        "ipa": "",
+        "pos": "phr.",
+        "def": "去除；擺脫",
+        "sentence": "I want to get rid of my old car."
+      },
+      {
+        "word": "when it comes to",
+        "ipa": "",
+        "pos": "phr.",
+        "def": "當談到……時",
+        "sentence": "When it comes to cooking, she is an expert."
+      }
     ]
   }
 ]

@@ -7,6 +7,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script>
+		window.APP_CACHE_VERSION = Date.now();
+		const styleLink = document.createElement('link');
+		styleLink.rel = 'stylesheet';
+		styleLink.href = `vocabulary-app.css?v=${window.APP_CACHE_VERSION}`;
+		document.head.appendChild(styleLink);
+	</script>
     <style>
         * {
             box-sizing: border-box;
@@ -164,5 +171,13 @@
             </a>
         </div>
     </div>
+    <script>
+		(function () {
+			const script = document.createElement('script');
+			script.src = `vocabulary-app.js?v=${window.APP_CACHE_VERSION}`;
+			script.onload = () => initializeApp('vocabGroupsRaw.json', 'english-first');
+			document.body.appendChild(script);
+		})();
+	</script>
 </body>
 </html>
